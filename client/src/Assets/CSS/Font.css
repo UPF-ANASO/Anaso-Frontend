@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Spoqa-Light';
+  src: local('SpoqaHanSansNeo-Light'),
+    url('../Font/SpoqaHanSansNeo-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa-Regular';
+  src: local('SpoqaHanSansNeo-Regular'),
+    url('../Font/SpoqaHanSansNeo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa-Medium';
+  src: local('SpoqaHanSansNeo-Medium'),
+    url('../Font/SpoqaHanSansNeo-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Spoqa-Bold';
+  src: local('SpoqaHanSansNeo-Bold'),
+    url('../Font/SpoqaHanSansNeo-Bold.ttf') format('truetype');
+}
