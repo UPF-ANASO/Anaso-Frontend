@@ -50,6 +50,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+html{
+  font-size: 18px;
+  font-family: "Spoqa-Light";
+}
 `;
 
 const GlobalCss = () => {
