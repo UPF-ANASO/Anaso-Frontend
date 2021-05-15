@@ -4,5 +4,13 @@
         "prettier", 
         "plugin:prettier/recommended"
     ],
-    "parser":"babel-eslint"
+    "parser":"babel-eslint",
+    "rules": {
+        "prettier/prettier" : [
+          "error",
+          {
+            "endOfLine":"auto"
+          }
+        ]
+      }
 }
