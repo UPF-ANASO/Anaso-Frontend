@@ -1,54 +1,62 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink, Router } from 'react-router-dom';
-import '../../Assets/CSS/Font.css';
+
+import { PrimaryColor, BackgroundColor } from '../../Assets/Color/Color';
 
 const CategoryPanel = styled.div`
   width: 100%;
   height: 40px;
   padding: 10px 0 0 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #f2f2f2;
+
+  border-bottom: 1px solid ${BackgroundColor};
 `;
 
 const CategoryLink = styled.div`
   position: relative;
-  font-family: 'Spoqa-Light';
   margin: 0 1rem;
+
+  font-family: 'Spoqa-Light';
   text-decoration: none;
   &.active {
     font-family: 'Spoqa-Medium';
+
     &:after {
       content: '';
       position: absolute;
       bottom: -5px;
       width: 100%;
       height: 2px;
-      background-color: #7edbb0;
+
+      background-color: ${PrimaryColor};
     }
   }
   &:after {
     content: '';
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
     top: 29px;
     width: 0;
     height: 2px;
-    background-color: #7edbb0;
+
+    transform: translateX(-50%);
     transition: 0.2s width linear;
+
+    background-color: ${PrimaryColor};
   }
   &:hover {
     font-family: 'Spoqa-Medium';
+
     &:after {
       width: 100%;
     }
   }
 `;
 
-const Category = () => {
+const ContestCategory = () => {
   return (
     <CategoryPanel>
       <CategoryLink className="active">전체</CategoryLink>
@@ -61,4 +69,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default ContestCategory;
