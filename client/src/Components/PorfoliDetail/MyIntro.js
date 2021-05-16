@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const MyIntroDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 20%;
-  height: 20%;
+  width: 25%;
+  height: 25%;
   min-width: 200px;
   min-height: 20vh;
   padding: 10px;
