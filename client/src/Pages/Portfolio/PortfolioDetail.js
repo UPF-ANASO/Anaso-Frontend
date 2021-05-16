@@ -4,6 +4,7 @@ import MyContest from '../../Components/PorfoliDetail/MyContest';
 import MyIntro from '../../Components/PorfoliDetail/MyIntro';
 import MyPorfolio from '../../Components/PorfoliDetail/MyPorfolio';
 import MyStudy from '../../Components/PorfoliDetail/MyStudy';
+import Header from '../../Components/common/Header';
 
 const PortfolioDetailDiv = styled.div`
   display: flex;
@@ -17,12 +18,15 @@ const PortfolioDetailDiv = styled.div`
 
 function PortfolioDetail() {
   return (
-    <PortfolioDetailDiv>
-      <MyIntro />
-      <MyContest />
-      <MyStudy />
-      <MyPorfolio />
-    </PortfolioDetailDiv>
+    <>
+      <Header />
+      <PortfolioDetailDiv>
+        <MyIntro />
+        <MyContest />
+        <MyStudy />
+        <MyPorfolio />
+      </PortfolioDetailDiv>
+    </>
   );
 }
 
