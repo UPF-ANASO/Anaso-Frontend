@@ -1,6 +1,6 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
-
+import { BackgroundColor } from '../../Assets/Color/Color';
 const GlobalStyle = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -54,6 +54,7 @@ table {
 html{
   font-size: 18px;
   font-family: "Spoqa-Light";
+	background-color: ${BackgroundColor};
 }
 `;
 
