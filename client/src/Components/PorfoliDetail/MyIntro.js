@@ -3,16 +3,14 @@ import styled from 'styled-components';
 
 const MyIntroDiv = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 25%;
-  height: 25%;
-  min-width: 200px;
-  min-height: 20vh;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 28%;
+  height: 30%;
+  min-width: 250px;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 5px 5px 5px 5px #e4e4e4;
-
-  /* background-color: #e4e4e4; */
 `;
 
 const MyPic = styled.div`
