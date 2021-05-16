@@ -54,7 +54,6 @@ table {
 html{
   font-size: 18px;
   font-family: "Spoqa-Light";
-	background-color: ${BackgroundColor};
 }
 `;
 

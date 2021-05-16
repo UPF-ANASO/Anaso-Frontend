@@ -2,7 +2,11 @@ import React from 'react';
 import Lottie from 'react-lottie';
 import styled from 'styled-components';
 import Main_Image from '../../Assets/Lottie/Main_Image.json';
-import { PrimaryColor, ShadowColor } from '../../Assets/Color/Color';
+import {
+  PrimaryColor,
+  ShadowColor,
+  TextColorGray,
+} from '../../Assets/Color/Color';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -12,7 +16,7 @@ const Container = styled.div`
     margin-top: 15px;
     display: inline-block;
     text-align: center;
-    border-bottom: 1px solid ${PrimaryColor};
+    color: ${TextColorGray};
   }
 `;
 const LottieContainer = styled.div`
@@ -20,6 +24,7 @@ const LottieContainer = styled.div`
   flex-direction: column;
   box-shadow: 3px 2px 3px ${ShadowColor};
   border-radius: 15px;
+  background-color: white;
 `;
 
 const DefaultOptions = {
