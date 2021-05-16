@@ -27,13 +27,18 @@ const NavList = styled.ul`
   margin: 0 auto;
   font-size: 1rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   li {
   }
 `;
 
-const Item = styled.li``;
+const Item = styled.li`
+  & + & {
+    padding-left: 10px;
+    margin-left: 10px;
+    border-left: 1px solid #87898c;
+  }
+`;
 
 const DescriptionContainer = styled.div`
   width: 80%;
