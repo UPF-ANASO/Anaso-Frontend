@@ -2,9 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MyStudyDiv = styled.div`
-  width: 25%;
-  /* height: 25%; */
+  width: 28%;
+  min-width: 250px;
+
+  height: 30%;
   border-radius: 10px;
+  padding: 10px;
   box-shadow: 5px 5px 5px 5px #e4e4e4;
   & > p {
     font-size: 1.2rem;
