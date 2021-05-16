@@ -6,7 +6,7 @@ import { ReactComponent as LogoWhite } from '../../Assets/Images/logo-en-white.s
 
 const Container = styled.div`
   width: 100%;
-  min-width: 1000px;
+  min-width: 800px;
   height: 125px;
   color: #87898c;
   background-color: ${TextColorGray};
