@@ -18,7 +18,7 @@ const Container = styled.div`
 const LottieContainer = styled.div`
   display: flex;
   flex-direction: column;
-  box-shadow: 1px 2px 3px ${ShadowColor};
+  box-shadow: 3px 2px 3px ${ShadowColor};
   border-radius: 15px;
 `;
 
