@@ -9,7 +9,7 @@ const MyPorfolioDiv = styled.div`
   width: 95%;
   height: 50%;
   border-radius: 10px;
-  background-color: #c8f3da;
+  background-color: rgb(200, 243, 218);
   box-shadow: 5px 5px 5px 5px #e4e4e4;
 `;
 
@@ -29,7 +29,7 @@ const Mark = styled.div`
 `;
 
 const AS = styled.div`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 500px;
   height: 250px;
 `;
