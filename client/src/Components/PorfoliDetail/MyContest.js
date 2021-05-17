@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MyContestDiv = styled.div`
-  width: 28%;
+  width: 25%;
   min-width: 250px;
   height: 30%;
   box-shadow: 5px 5px 5px 5px #e4e4e4;
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
   & > p {
+    font-family: 'Spoqa-Medium';
     font-size: 1.2rem;
   }
 `;

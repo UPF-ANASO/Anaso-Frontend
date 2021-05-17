@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 const HeaderDiv = styled.div`
   top: 0;
   min-width: 50vw;
-  width: 100%;
+  width: 100vw;
   height: 30px;
   padding: 20px 0;
 

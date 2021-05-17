@@ -13,7 +13,7 @@ const PortfolioDetailDiv = styled.div`
   flex-wrap: wrap;
   width: 100vw;
   height: 100vh;
-  font-family: 'Spoqa-Light';
+  /* font-family: 'Spoqa-Light'; */
 `;
 
 function PortfolioDetail() {
