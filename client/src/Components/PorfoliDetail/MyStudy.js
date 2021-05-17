@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PrimaryColor, TextColorBlack } from '../../Assets/Color/Color';
 
 const MyStudyDiv = styled.div`
-  width: 28%;
+  width: 25%;
   min-width: 250px;
-
   height: 30%;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   box-shadow: 5px 5px 5px 5px #e4e4e4;
   & > p {
+    font-family: 'Spoqa-Medium';
     font-size: 1.2rem;
   }
 `;
