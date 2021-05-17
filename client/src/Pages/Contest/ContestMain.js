@@ -1,10 +1,14 @@
 import React from 'react';
-import Category from '../../Components/ContestMain/Category';
+import ContestCategory from '../../Components/ContestMain/ContestCategory';
+import ContestBanner from '../../Components/ContestMain/ContestBanner';
+import ContestCardList from '../../Components/ContestMain/ContestCardList';
 
 const ContestMain = () => {
   return (
     <div>
-      <Category />
+      <ContestCategory />
+      <ContestBanner />
+      <ContestCardList />
     </div>
   );
 };
