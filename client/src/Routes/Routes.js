@@ -6,6 +6,7 @@ import Signup from '../Pages/User/Signup';
 import UserEdit from '../Pages/User/UserEdit';
 import PortfolioDetail from '../Pages/Portfolio/PortfolioDetail';
 import PortfolioList from '../Pages/Portfolio/PortfolioList';
+import ApiTest from '../Pages/Portfolio/ApiTest';
 
 const Routes = () => {
   return (
@@ -20,6 +21,7 @@ const Routes = () => {
         {/* portfolio */}
         <Route path="/portfoliodetail" exact component={PortfolioDetail} />
         <Route path="/portfoliolist" component={PortfolioList} />
+        <Route path="/apitest" component={ApiTest} />
       </Switch>
     </Router>
   );
