@@ -84,23 +84,16 @@ const CardBottom = styled.div`
   }
 `;
 
-const ContestCard = () => {
+const ContestCard = ({ data }) => {
   return (
     <CardPanel to="/contestdetail">
-      <img
-        src="https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/7f607877ec4844b3a4e22afd20c3cfb8.jpg"
-        alt=""
-      />
+      <img src={data.img} alt="" />
       <CardTitle>
-        <span>2021 위핏 UX∙마케팅 아이디어 공모전</span>
-        <span>D-3</span>
+        <span>{data.title}</span>
+        <span>D-{data.dday}</span>
       </CardTitle>
       <CardContent>
-        <p>
-          {/* 여기도 말줄임 필요한데 어케 해야될지 몰겠다... */}
-          고려대학교에서 주최하는 대학생 언택트 서비스를 주제로 해커톤을
-          진행합니다.
-        </p>
+        <p>{data.content}</p>
       </CardContent>
       <CardBottom>
         {/* 나중에 링크 처리해줘야 하는 곳 */}
@@ -108,7 +101,7 @@ const ContestCard = () => {
           <span>자세히 보기</span>
           <Arrow />
         </div>
-        <span>조회수 1</span>
+        <span>조회수 {data.hits}</span>
       </CardBottom>
     </CardPanel>
   );

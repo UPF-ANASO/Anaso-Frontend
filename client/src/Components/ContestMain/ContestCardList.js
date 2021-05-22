@@ -30,6 +30,37 @@ const FilterButtonsPanel = styled.div`
   }
 `;
 
+// 테스트용 데이터
+const testdata = [
+  {
+    id: 1,
+    img: 'https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/7f607877ec4844b3a4e22afd20c3cfb8.jpg',
+    title: '2021 위핏 UX∙마케팅 아이디어 공모전',
+    dday: 3,
+    content:
+      '고려대학교에서 주최하는 대학생 언택트 서비스를 주제로 해커톤을 진행합니다.',
+    hits: 1,
+  },
+  {
+    id: 2,
+    img: 'https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/7f607877ec4844b3a4e22afd20c3cfb8.jpg',
+    title: '2021 위핏 UX∙마케팅 아이디어 공모전',
+    dday: 3,
+    content:
+      '고려대학교에서 주최하는 대학생 언택트 서비스를 주제로 해커톤을 진행합니다.',
+    hits: 1,
+  },
+  {
+    id: 3,
+    img: 'https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/7f607877ec4844b3a4e22afd20c3cfb8.jpg',
+    title: '2021 위핏 UX∙마케팅 아이디어 공모전',
+    dday: 3,
+    content:
+      '고려대학교에서 주최하는 대학생 언택트 서비스를 주제로 해커톤을 진행합니다.',
+    hits: 1,
+  },
+];
+
 const ContestCardList = () => {
   return (
     <>
@@ -43,15 +74,9 @@ const ContestCardList = () => {
         </Link>
       </ButtonsPanel>
       <CardListPanel>
-        <ContestCard />
-        <ContestCard />
-        <ContestCard />
-        <ContestCard />
-        <ContestCard />
-        <ContestCard />
-        <ContestCard />
-        <ContestCard />
-        <ContestCard />
+        {testdata.map((data) => (
+          <ContestCard data={data} key={data.id} />
+        ))}
       </CardListPanel>
     </>
   );
