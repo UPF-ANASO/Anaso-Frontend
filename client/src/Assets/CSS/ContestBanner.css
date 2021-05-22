@@ -1,0 +1,67 @@
+/* 전체 컨테이너 */
+.swiper-container {
+  width: 100%;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 카드들 감싸는 wrapper */
+.swiper-wrapper {
+  align-items: center;
+  justify-content: center;
+}
+
+/* swiper 안에 카드 */
+.swiper-slide {
+  width: 300px !important;
+  height: 430px;
+  padding: 20px;
+  margin: 0 20px;
+
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  background: #fff;
+  box-shadow: 0px 0px 30px rgba(57, 40, 166, 0.15);
+  border-radius: 20px;
+}
+
+.swiper-slide > span:first-of-type {
+  /* D-Day */
+  padding: 5px 10px;
+  margin-bottom: 10px;
+
+  font-family: 'Spoqa-Bold';
+
+  background-color: #7edbb0;
+  color: white;
+  border-radius: 10px;
+}
+
+.swiper-slide > span:last-of-type {
+  /* 제목 */
+  font-family: 'Spoqa-Bold';
+  padding-top: 1px;
+
+  max-width: 300px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.swiper-slide > img {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* swiper 안에 네비게이션 버튼 */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #66ba89;
+}
