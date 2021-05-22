@@ -63,7 +63,7 @@ function Header() {
       <StyledLink to="/portfoliolist">
         <Subtitle>포트폴리오</Subtitle>
       </StyledLink>
-      <StyledLink to="/">
+      <StyledLink to="/contestmain">
         <Subtitle>공모전</Subtitle>
       </StyledLink>
       <StyledLink to="/">
