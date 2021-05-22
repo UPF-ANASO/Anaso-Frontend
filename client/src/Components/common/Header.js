@@ -70,10 +70,10 @@ function Header() {
         <Subtitle>스터디</Subtitle>
       </StyledLink>
       <UserDiv>
-        <StyledLink to="/">
+        <StyledLink to="/login">
           <Subtitle>로그인</Subtitle>
         </StyledLink>
-        <StyledLink to="/">
+        <StyledLink to="/signup">
           <Subtitle>회원가입</Subtitle>
         </StyledLink>
       </UserDiv>
