@@ -25,7 +25,7 @@ const CardPanel = styled.div`
 
 const CardTitle = styled.div`
   width: 100%;
-  margin: 15px 0 10px 0;
+  margin: 15px 0 0 0;
 
   display: flex;
   justify-content: space-between;
@@ -54,17 +54,16 @@ const CardTitle = styled.div`
 `;
 
 const CardContent = styled.div`
-  margin: 5px 0 10px 0;
-
   & > p {
     text-align: justify;
     font-size: 0.9em;
+    margin: 20px 0;
   }
 `;
 
 const CardBottom = styled.div`
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
 
   display: flex;
   justify-content: space-between;
