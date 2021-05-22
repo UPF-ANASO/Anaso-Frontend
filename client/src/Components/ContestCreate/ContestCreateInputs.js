@@ -58,13 +58,6 @@ const QuillPanel = styled.div`
   }
 `;
 
-const ButtonPanel = styled.div`
-  width: 100%;
-  padding: 10px 0 50px 0;
-  display: flex;
-  justify-content: center;
-`;
-
 const ContestCreateInputs = () => {
   const modules = {
     toolbar: [
@@ -123,6 +116,8 @@ const ContestCreateInputs = () => {
         <input type="number" placeholder="" />
         <span>홈페이지</span>
         <input type="text" placeholder="" />
+        <span>대표 이미지</span>
+        <input type="file" accept="image/png, image/jpeg" />
       </DetailInput>
       <QuillPanel>
         <ReactQuill
@@ -133,9 +128,6 @@ const ContestCreateInputs = () => {
           formats={formats}
         />
       </QuillPanel>
-      <ButtonPanel>
-        <Button width="100%" text="등록" />
-      </ButtonPanel>
     </>
   );
 };

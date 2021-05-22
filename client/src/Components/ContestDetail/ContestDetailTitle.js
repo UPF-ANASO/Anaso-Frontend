@@ -22,7 +22,24 @@ const Writer = styled(Link)`
   margin-left: 40%;
   font-family: 'Spoqa-Medium';
   text-decoration: none;
-  color: ${PrimaryColor};
+  color: black;
+
+  transition: all 0.3s;
+  &:hover {
+    color: ${PrimaryColor};
+  }
+`;
+
+const Edit = styled(Link)`
+  margin-left: 10px;
+  font-family: 'Spoqa-Light';
+  text-decoration: none;
+  color: black;
+
+  transition: all 0.3s;
+  &:hover {
+    color: ${PrimaryColor};
+  }
 `;
 
 const Details = styled.div`
@@ -68,7 +85,8 @@ const ContestDetailTitle = () => {
       <TitleBox>
         <h1>AI 창업 경진대회 참가자 모집</h1>
         {/* 나중에 링크처리할 부분 */}
-        <Writer>작성자 최민석</Writer>
+        <Writer to="/portfoliodetail">작성자 최민석</Writer>
+        <Edit to="/contestedit">수정하기</Edit>
       </TitleBox>
       <Details>
         <DetailImg>
