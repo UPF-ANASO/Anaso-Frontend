@@ -1,9 +1,7 @@
-import axios from 'axios';
-import React from 'react';
-import { instance } from '../Server';
+// import axios from 'axios';
+// import React from 'react';
+// import { instance } from '../Server';
 
-export const ProjectListAPI = () => {
-  //   const list =await
-  //   console.log(list.data);
-  //   return title, role;
-};
+// export const ProjectListAPI = () => {
+//     const tt = await axios.get(`${instance}/projects/lists`;
+// }
