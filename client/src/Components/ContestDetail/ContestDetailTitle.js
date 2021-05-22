@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { PrimaryColor } from '../../Assets/Color/Color';
 
@@ -14,11 +15,14 @@ const TitleBox = styled.div`
     font-family: 'Spoqa-Bold';
     font-size: 2em;
   }
-  & span {
-    margin-left: 40%;
-    font-family: 'Spoqa-Medium';
-    color: ${PrimaryColor};
-  }
+`;
+
+// 작성자 프로필로 이동하는 링크
+const Writer = styled(Link)`
+  margin-left: 40%;
+  font-family: 'Spoqa-Medium';
+  text-decoration: none;
+  color: ${PrimaryColor};
 `;
 
 const Details = styled.div`
@@ -64,7 +68,7 @@ const ContestDetailTitle = () => {
       <TitleBox>
         <h1>AI 창업 경진대회 참가자 모집</h1>
         {/* 나중에 링크처리할 부분 */}
-        <span>작성자 최민석</span>
+        <Writer>작성자 최민석</Writer>
       </TitleBox>
       <Details>
         <DetailImg>
