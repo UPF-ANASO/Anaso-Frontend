@@ -14,22 +14,25 @@ const Container = styled.ul`
   li {
     display: flex;
     width: 80%;
-    height: 50%;
+    padding: 1%;
+    height: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
+    justify-content: space-between;
     box-shadow: 1px 2px 3px ${ShadowColor};
+    background-color: #ffffff;
   }
 `;
 
 const ImageSession = styled.div`
-  width: 40%;
+  width: 30%;
   height: 100%;
   display: flex;
   /* justify-content: center; */
   align-items: center;
   img {
     width: 100%;
-    height: 50%;
+    height: 100%;
     object-fit: cover;
     border-radius: 5px;
   }
@@ -45,11 +48,13 @@ const InfoSession = styled.div`
     width: 100%;
     font-size: 0.6rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     strong {
       font-family: 'Spoqa-Regular';
       font-size: 0.8rem;
+      margin-bottom: 10px;
     }
   }
 `;

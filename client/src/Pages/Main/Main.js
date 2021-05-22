@@ -11,7 +11,6 @@ import Title from '../../Components/Main/Title';
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
 `;
 
 /* ------------ 로그인 전 메인 --------------- */
@@ -54,7 +53,7 @@ const AfterMainContainer = styled.div`
 const TopSession = styled.div`
   width: 100%;
   height: 35%;
-  padding: 5% 0;
+  padding: 2.5% 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -114,17 +113,17 @@ const Main = () => {
   return (
     <Container>
       <Header />
-      {/* <MainContainer>
+      <MainContainer>
         <TitleSessionContainer>
           <Title />
         </TitleSessionContainer>
         <ImageSessionContainer>
           <ImageSession />
         </ImageSessionContainer>
-      </MainContainer> */}
+      </MainContainer>
       {/* -------- 로그인 후 ----------- */}
-      <AfterMainContainer>
-        {/* 포트폴리오 리스트 및 프로필 */}
+      {/* 포트폴리오 리스트 및 프로필 */}
+      {/* <AfterMainContainer>
         <TopSession>
           <PortfolioContainer>
             <h3>최신 포트폴리오</h3>
@@ -142,7 +141,7 @@ const Main = () => {
             <ContestCard />
           </ContestContainer>
         </MiddleSession>
-      </AfterMainContainer>
+      </AfterMainContainer> */}
       <Footer />
     </Container>
   );

@@ -5,7 +5,7 @@ import Header from '../../Components/common/Header';
 import Input from '../../Components/Login/Input';
 import Button from '../../Components/common/Button/Button';
 import { TextColorGray } from '../../Assets/Color/Color';
-
+import { LoginAPI } from '../../Api/User/user';
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -34,19 +34,30 @@ const LogoTitle = styled.h3`
 `;
 
 const Login = () => {
+  const handlerlogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await LoginAPI(email, password);
+      console.log(response.data);
+    } catch (err) {
+      const msg = err.response.data.message;
+      alert(msg);
+    }
+  };
+
   return (
     <Container>
       <Header />
       <MainContainer>
         <Logo width={200} height={100} />
         <LogoTitle>나를 표현하는 가장 쉬운 방법</LogoTitle>
-        <Input placeholder="아이디를 입력해주세요." width="45%" type="text" />
+        <Input placeholder="아이디를 입력해주세요." width="250px" type="text" />
         <Input
           placeholder="비밀번호를 입력해주세요."
-          width="45%"
+          width="250px"
           type="password"
         />
-        <Button text="로그인" width="45%" />
+        <Button text="로그인" width="250px" />
       </MainContainer>
     </Container>
   );

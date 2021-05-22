@@ -12,17 +12,18 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 1px 2px 3px ${ShadowColor};
+  background-color: rgba(200, 243, 218, 0.3);
+  box-shadow: 1px 1px 3px ${ShadowColor};
 `;
 
 const ImgSession = styled.div`
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
   width: 100%;
   height: 70%;
   img {
-    width: 80%;
+    width: 100%;
     height: 100%;
     border-radius: 10px;
     object-fit: cover;
