@@ -12,14 +12,14 @@ import { Link } from 'react-router-dom';
 const HeaderDiv = styled.div`
   top: 0;
   min-width: 50vw;
-  width: 100vw;
+  width: 100%;
   height: 30px;
   padding: 20px 0;
 
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0 8px 20px ${ShadowColor};
+  box-shadow: 0 3px 10px ${ShadowColor};
   color: ${TextColorBlack};
 `;
 

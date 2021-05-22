@@ -7,6 +7,7 @@ import {
   PrimaryColor,
 } from '../../Assets/Color/Color';
 import Button from '../common/Button/Button';
+import { Link } from 'react-router-dom';
 
 const SearchOuputDiv = styled.div`
   display: flex;
@@ -103,7 +104,9 @@ function SearchOutput() {
         <TextDiv>
           <p key={index}>{test.username}</p>
           <p key={index}>{test.info}</p>
-          <button>자세히 보기</button>
+          <Link to="/portfoliodetail">
+            <button>자세히 보기</button>
+          </Link>
         </TextDiv>
       </OutputContent>
     );
