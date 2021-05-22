@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
+
 // import Swiper core and required modules
 import SwiperCore, { Navigation } from 'swiper/core';
 
@@ -18,6 +20,8 @@ SwiperCore.use([Navigation]);
 
 const BannerPanel = styled.div`
   width: 100%;
+  padding-top: 30px;
+
   background-color: rgba(126, 219, 176, 0.3);
   box-shadow: inset 0px 0px 30px rgba(57, 40, 166, 0.15);
 
@@ -29,6 +33,7 @@ const BannerSearchBar = styled.div`
   height: 25px;
   padding: 10px;
   margin: 0 auto;
+  display: flex;
 
   background-color: white;
   border-radius: 5px;
@@ -43,14 +48,19 @@ const BannerSearchBar = styled.div`
       color: black;
     }
   }
+
+  & svg {
+    padding: 4px 0 0 3px;
+    margin-right: 10px;
+  }
 `;
 
-const BannerCardShortcut = styled.div`
+const BannerCardShortcut = styled(Link)`
   width: 100%;
   margin: 5px 0 15px 0;
 
   text-align: left;
-  cursor: pointer;
+  text-decoration: none;
   & > span {
     margin-right: 6px;
     font-family: 'Spoqa-Bold';
@@ -83,7 +93,7 @@ const ContestBanner = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <BannerCardShortcut>
+          <BannerCardShortcut to="/">
             <span>Read More</span>
             <Arrow />
           </BannerCardShortcut>

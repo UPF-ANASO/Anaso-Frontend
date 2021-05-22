@@ -3,10 +3,8 @@ import styled from 'styled-components';
 import { ShadowColor } from '../../Assets/Color/Color';
 import Test from '../../Assets/Images/Test.png';
 const Container = styled.ul`
-  box-shadow: 1px 2px 3px ${ShadowColor};
   border-radius: 10px;
   width: 100%;
-
   height: 100%;
   display: flex;
   flex-direction: column;
