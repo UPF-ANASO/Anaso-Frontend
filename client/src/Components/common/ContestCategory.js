@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { PrimaryColor, BackgroundColor } from '../../Assets/Color/Color';
 
@@ -15,12 +16,13 @@ const CategoryPanel = styled.div`
   border-bottom: 1px solid ${BackgroundColor};
 `;
 
-const CategoryLink = styled.div`
+const CategoryLink = styled(Link)`
   position: relative;
   margin: 0 1rem;
 
   font-family: 'Spoqa-Light';
   text-decoration: none;
+  color: black;
   &.active {
     font-family: 'Spoqa-Medium';
 
