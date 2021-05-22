@@ -15,7 +15,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  box-shadow: 1px 2px 3px ${ShadowColor};
+  background-color: #ffffff;
+  box-shadow: 1px 1px 3px ${ShadowColor};
 `;
 
 const ImageSessionContainer = styled.div`
@@ -33,11 +34,10 @@ const ImageSessionContainer = styled.div`
 `;
 
 const DescriptionSession = styled.div`
-  width: 45%;
+  width: 50%;
   height: 80%;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   align-items: center;
 `;
 
@@ -45,22 +45,16 @@ const Title = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.8rem;
-  flex: 1;
-  flex-basis: 50%;
+  font-size: 0.6rem;
   font-family: 'Spoqa-Regular';
 `;
 
 const ContestTitle = styled.p`
   font-size: 0.5rem;
-  flex: 1;
-  flex-basis: 40%;
   font-family: 'Spoqa-Light';
 `;
 
 const WriterView = styled.div`
-  flex: 1;
-  flex-basis: 20%;
   display: flex;
   width: 100%;
   justify-content: space-around;

@@ -5,7 +5,7 @@ const InputText = styled.input`
   border: 0;
   border-bottom: 2px solid ${PrimaryColor};
   width: ${(props) => props.width || '100%'};
-  font-size: 1rem;
+  font-size: ${(props) => props.fontsize || '1rem'};
   :focus {
     transition: 0.3s;
     border-bottom: 2px solid ${TextColorGray};
@@ -14,8 +14,26 @@ const InputText = styled.input`
   }
 `;
 
-const Input = ({ type, width, placeholder }) => {
-  return <InputText placeholder={placeholder} type={type} width={width} />;
+const Input = ({
+  fontsize,
+  accept,
+  ref,
+  onChange,
+  type,
+  width,
+  placeholder,
+}) => {
+  return (
+    <InputText
+      fontsize={fontsize}
+      accept={accept}
+      ref={ref}
+      onChange={onChange}
+      placeholder={placeholder}
+      type={type}
+      width={width}
+    />
+  );
 };
 
 export default Input;
