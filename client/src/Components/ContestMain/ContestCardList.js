@@ -3,6 +3,7 @@ import ContestCard from './ContestCard';
 import styled from 'styled-components';
 
 import Button from '../common/Button/Button';
+import { Link } from 'react-router-dom';
 
 const CardListPanel = styled.div`
   width: 100%;
@@ -37,9 +38,9 @@ const ContestCardList = () => {
           <Button width="80px" text="마감기한 순" />
           <Button width="100px" text="조회수 높은 순" color="#7d7d7d" />
         </FilterButtonsPanel>
-        <div>
+        <Link to="/contestcreate">
           <Button width="80px" text="새 글 쓰기" />
-        </div>
+        </Link>
       </ButtonsPanel>
       <CardListPanel>
         <ContestCard />
