@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ShadowColor } from '../../Assets/Color/Color';
+import { ShadowColor, TextColorGray } from '../../Assets/Color/Color';
 import Test from '../../Assets/Images/Test.png';
 
 const Container = styled.div`
-  width: 85%;
+  width: 100%;
   height: 100%;
-  padding: 0 2.5%;
+  /* padding: 0 2.5%; */
   display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
   border-radius: 10px;
   box-shadow: 1px 2px 3px ${ShadowColor};
 `;
@@ -15,25 +18,50 @@ const Container = styled.div`
 const ImgSession = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 60%;
-  height: 100%;
+  /* align-items: center; */
+  width: 100%;
+  height: 70%;
   img {
-    width: 100%;
-    height: 50%;
+    width: 80%;
+    height: 100%;
     border-radius: 10px;
     object-fit: cover;
   }
 `;
 
 const InfoSession = styled.div`
-  width: 50%;
-  height: 100%;
-  p {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
+  width: 85%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 100%; */
+`;
+
+const Profile_Session = styled.h3`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  width: 100%;
+`;
+const Profile_name = styled.span`
+  font-size: 0.8rem;
+  font-family: 'Spoqa-Regular';
+`;
+const Profile_info = styled.span`
+  font-size: 0.3rem;
+  font-family: 'Spoqa-Light';
+  color: ${TextColorGray};
+`;
+const Hash_info = styled.div`
+  display: flex;
+`;
+const Hash_tag = styled.span`
+  font-size: 0.7rem;
+  & + & {
+    margin-left: 10px;
   }
 `;
 
@@ -44,7 +72,15 @@ const Profile = () => {
         <img src={Test} />
       </ImgSession>
       <InfoSession>
-        <p>ㅎㅇㄹ</p>
+        <Profile_Session>
+          <Profile_name>최민석</Profile_name>
+          <Profile_info>순천향대학교 소프트웨어공학과</Profile_info>
+        </Profile_Session>
+        <Hash_info>
+          <Hash_tag>#열정</Hash_tag>
+          <Hash_tag>#노력</Hash_tag>
+          <Hash_tag>#긍정</Hash_tag>
+        </Hash_info>
       </InfoSession>
     </Container>
   );

@@ -9,7 +9,7 @@ import {
 
 const Container = styled.div`
   display: flex;
-  width: 33%;
+  width: 30%;
   height: 100%;
   border: 1px solid #e4e4e4;
   justify-content: center;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PrimaryColor, PrimaryColor2 } from '../../Assets/Color/Color';
 import Header from '../../Components/common/Header';
 import ContestCard from '../../Components/Main/ContestCard';
 import Footer from '../../Components/Main/Footer';
@@ -51,43 +52,49 @@ const AfterMainContainer = styled.div`
 `;
 
 const TopSession = styled.div`
-  height: 200px;
+  width: 100%;
+  height: 35%;
+  padding: 5% 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  h3 {
-    width: 90%;
-    margin: 10px 0;
-  }
+  justify-content: space-between;
 `;
 
 const PortfolioContainer = styled.div`
-  flex: 1;
-  flex-basis: 70%;
+  width: 65%;
+  height: 100%;
+  border-radius: 12px;
+  /* padding: 2.5% 0; */
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(200, 243, 218, 0.3);
   /* width: 70%; */
-  height: 200px;
   display: flex;
   flex-direction: column;
+  h3 {
+    width: 85%;
+    margin: 15px 0;
+  }
 `;
 
 const ProfileContainer = styled.div`
-  flex: 1;
-  flex-basis: 30%;
+  width: 30%;
   height: 100%;
 `;
 
 const MiddleSession = styled.div`
   width: 100%;
-  height: 250px;
+  height: 30%;
+  padding: 2.5% 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba(200, 243, 218, 0.3);
+  border-radius: 12px;
   h3 {
     width: 90%;
-    margin: 10px 0;
+    margin: 15px 0;
   }
 `;
 
