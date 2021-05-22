@@ -6,6 +6,9 @@ import Signup from '../Pages/User/Signup';
 import UserEdit from '../Pages/User/UserEdit';
 import PortfolioDetail from '../Pages/Portfolio/PortfolioDetail';
 import PortfolioList from '../Pages/Portfolio/PortfolioList';
+import ContestMain from '../Pages/Contest/ContestMain';
+import ContestDetail from '../Pages/Contest/ContestDetail';
+import ContestCreate from '../Pages/Contest/ContestCreate';
 import ApiTest from '../Pages/Portfolio/ApiTest';
 
 const Routes = () => {
@@ -22,6 +25,10 @@ const Routes = () => {
         <Route path="/portfoliodetail" exact component={PortfolioDetail} />
         <Route path="/portfoliolist" component={PortfolioList} />
         <Route path="/apitest" component={ApiTest} />
+        {/* Contest */}
+        <Route path="/contestmain" exact component={ContestMain} />
+        <Route path="/contestdetail" exact component={ContestDetail} />
+        <Route path="/contestcreate" component={ContestCreate} />
       </Switch>
     </Router>
   );
