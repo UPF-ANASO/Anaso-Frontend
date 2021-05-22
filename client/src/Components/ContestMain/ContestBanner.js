@@ -10,7 +10,7 @@ import SwiperCore, { Navigation } from 'swiper/core';
 import 'swiper/swiper.min.css';
 import 'swiper/components/navigation/navigation.min.css';
 
-import '../../Assets/CSS/ContestBanner.scss';
+import '../../Assets/CSS/ContestBanner.css';
 import { ReactComponent as Arrow } from '../../Assets/Images/icon-rightarrow.svg';
 import { ReactComponent as Search } from '../../Assets/Images/icon-search.svg';
 import { PrimaryColor } from '../../Assets/Color/Color';
