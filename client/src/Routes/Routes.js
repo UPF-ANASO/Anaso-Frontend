@@ -1,15 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import Main from '../Pages/Main/Main';
 import Login from '../Pages/User/Login';
 import Signup from '../Pages/User/Signup';
 import UserEdit from '../Pages/User/UserEdit';
+
 import PortfolioDetail from '../Pages/Portfolio/PortfolioDetail';
 import PortfolioList from '../Pages/Portfolio/PortfolioList';
+import ApiTest from '../Pages/Portfolio/ApiTest';
+
 import ContestMain from '../Pages/Contest/ContestMain';
 import ContestDetail from '../Pages/Contest/ContestDetail';
 import ContestCreate from '../Pages/Contest/ContestCreate';
-import ApiTest from '../Pages/Portfolio/ApiTest';
+import ContestEdit from '../Pages/Contest/ContestEdit';
 
 const Routes = () => {
   return (
@@ -29,6 +33,7 @@ const Routes = () => {
         <Route path="/contestmain" exact component={ContestMain} />
         <Route path="/contestdetail" exact component={ContestDetail} />
         <Route path="/contestcreate" component={ContestCreate} />
+        <Route path="/contestedit" component={ContestEdit} />
       </Switch>
     </Router>
   );
