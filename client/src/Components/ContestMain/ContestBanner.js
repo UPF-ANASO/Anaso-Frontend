@@ -93,7 +93,7 @@ const ContestBanner = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <BannerCardShortcut to="/">
+          <BannerCardShortcut to="/contestdetail">
             <span>Read More</span>
             <Arrow />
           </BannerCardShortcut>

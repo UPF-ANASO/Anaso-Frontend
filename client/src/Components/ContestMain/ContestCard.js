@@ -2,9 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as Arrow } from '../../Assets/Images/icon-rightarrow.svg';
 
+import { Link } from 'react-router-dom';
+
 import { PrimaryColor } from '../../Assets/Color/Color';
 
-const CardPanel = styled.div`
+const CardPanel = styled(Link)`
   width: 300px;
   height: 480px;
   padding: 20px;
@@ -15,6 +17,8 @@ const CardPanel = styled.div`
 
   box-shadow: 0px 0px 30px rgba(57, 40, 166, 0.15);
   border-radius: 20px;
+  text-decoration: none;
+  color: black;
   & > img {
     width: 300px;
     height: 350px;
@@ -82,7 +86,7 @@ const CardBottom = styled.div`
 
 const ContestCard = () => {
   return (
-    <CardPanel>
+    <CardPanel to="/contestdetail">
       <img
         src="https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/7f607877ec4844b3a4e22afd20c3cfb8.jpg"
         alt=""

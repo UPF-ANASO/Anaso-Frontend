@@ -24,17 +24,12 @@ const ApplyPanel = styled.div`
 const ApplyBox = styled.div`
   display: grid;
   grid-gap: 20px 0;
-  grid-template-columns: 1fr 1fr;
   overflow: visible;
 `;
 
 const PositionBox = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  align-items: center;
-  & span:first-of-type {
-    min-width: 200px;
-  }
+  grid-template-columns: 8fr 4fr 1fr;
 `;
 
 const ContestDetailApply = () => {
