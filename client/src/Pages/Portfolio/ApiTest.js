@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { instance } from '../../Api/Server';
-import { ProjectListAPI } from '../../Api/Project/Project';
+import { ProjectCreateAPI, ProjectListAPI } from '../../Api/Project/Project';
 
 const SS = styled.div`
   width: 100vw;
@@ -29,7 +29,7 @@ function ApiTest() {
         // 응답을 res 에 저장.
         const res = await axios.get('projects/lists');
         // console.log(res.data[0]);
-        setTests(res.data[0]);
+        setTests(res.data);
       } catch (e) {
         // 만약 오류가 생기면 여기서 catch
         setError(e); // error : true
@@ -38,7 +38,13 @@ function ApiTest() {
     };
     // 함수 fetchUsers() 실행
     fetchUsers();
-    console.log(tests);
+    // 프젝 생성 api 실행 ..
+    const post = ProjectCreateAPI();
+    // 프젝 리스트 api 실행 ..
+    const list = ProjectListAPI();
+    console.log(post);
+    console.log(list);
+    // console.log(tests);
   }, []);
   if (loading)
     return (
