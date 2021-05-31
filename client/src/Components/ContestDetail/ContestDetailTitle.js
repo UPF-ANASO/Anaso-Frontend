@@ -26,7 +26,7 @@ const Writer = styled(Link)`
 
   transition: all 0.3s;
   &:hover {
-    color: ${PrimaryColor};
+    color: #ccc;
   }
 `;
 
@@ -38,7 +38,7 @@ const Edit = styled(Link)`
 
   transition: all 0.3s;
   &:hover {
-    color: ${PrimaryColor};
+    color: #ccc;
   }
 `;
 
@@ -72,46 +72,71 @@ const DetailText = styled.div`
   }
   span:nth-of-type(odd) {
     font-family: 'Spoqa-Medium';
-    color: ${PrimaryColor};
+    color: #ccc;
   }
   span:last-of-type {
     margin: 0;
   }
 `;
 
+const FileLink = styled.span`
+  & a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s;
+  }
+  & a:hover {
+    text-decoration: underline;
+    color: #ccc;
+  }
+`;
+
+const testdata = {
+  title: 'AI 창업 경진대회 참가자 모집',
+  writer: '최민석',
+  img: 'https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/73718a84cad942a7a120dc34cfb4bed3.jpg',
+  category: '아이디어/기획',
+  target: '제한 없음',
+  host: '인공지능산업융합단',
+  sponser: '정보 없음',
+  period: '', // 접수 기간
+  scale: '500만 원',
+  homepage: '정보 없음',
+  file: '설명.pdf',
+};
+
 const ContestDetailTitle = () => {
   return (
     <>
       <TitleBox>
-        <h1>AI 창업 경진대회 참가자 모집</h1>
+        <h1>{testdata.title}</h1>
         {/* 나중에 링크처리할 부분 */}
-        <Writer to="/portfoliodetail">작성자 최민석</Writer>
+        <Writer to="/portfoliodetail">작성자 {testdata.writer}</Writer>
         <Edit to="/contestedit">수정하기</Edit>
       </TitleBox>
       <Details>
         <DetailImg>
-          <img
-            src="https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/73718a84cad942a7a120dc34cfb4bed3.jpg"
-            alt=""
-          />
+          <img src={testdata.img} alt="" />
         </DetailImg>
         <DetailText>
           <span>분야</span>
-          <span>아이디어/기획</span>
+          <span>{testdata.category}</span>
           <span>응모 대상</span>
-          <span>제한 없음</span>
+          <span>{testdata.target}</span>
           <span>주최/주관</span>
-          <span>인공지능산업융합사업단</span>
+          <span>{testdata.host}</span>
           <span>후원/협찬</span>
-          <span>정보 없음</span>
+          <span>{testdata.sponser}</span>
           <span>접수 기간</span>
           <span>2021-05-10 ~ 2021-05-28 3:00 오후</span>
           <span>지원 규모</span>
-          <span>500만 원</span>
+          <span>{testdata.scale}</span>
           <span>홈페이지</span>
-          <span>정보 없음</span>
+          <span>{testdata.homepage}</span>
           <span>첨부 파일</span>
-          <span>설명.pdf</span>
+          <FileLink>
+            <a href="">{testdata.file}</a>
+          </FileLink>
         </DetailText>
       </Details>
     </>

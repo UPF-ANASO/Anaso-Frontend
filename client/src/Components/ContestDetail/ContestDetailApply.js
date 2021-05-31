@@ -32,6 +32,17 @@ const PositionBox = styled.div`
   grid-template-columns: 8fr 4fr 1fr;
 `;
 
+const testdata = [
+  {
+    id: 1,
+    position: 'Back-End (Spring/Django/Python)',
+    total: 3,
+    available: true,
+  },
+  { id: 2, position: 'PM', total: 1, available: true },
+  { id: 3, position: 'Front-End (ReactJS)', total: 2, available: false },
+];
+
 const ContestDetailApply = () => {
   return (
     <ApplyPanel>
@@ -39,22 +50,17 @@ const ContestDetailApply = () => {
       <hr />
       <ApplyBox>
         {/* 신청 가능 */}
-        <PositionBox>
-          <span>Back-End (Spring/Django/Python)</span>
-          <span>3 명</span>
-          <Button width="90px" text="신청하기" />
-        </PositionBox>
-        <PositionBox>
-          <span>PM</span>
-          <span>1 명</span>
-          <Button width="90px" text="신청하기" />
-        </PositionBox>
-        {/* 신청 마감 */}
-        <PositionBox>
-          <span>Front-End (ReactJS)</span>
-          <span>3 명</span>
-          <Button width="90px" text="신청하기" color="#f57168" />
-        </PositionBox>
+        {testdata.map((data) => (
+          <PositionBox key={data.id}>
+            <span>{data.position}</span>
+            <span>{data.total} 명</span>
+            {data.available ? (
+              <Button width="90px" text="신청하기" />
+            ) : (
+              <Button width="90px" text="신청마감" color="#d25b5b" />
+            )}
+          </PositionBox>
+        ))}
       </ApplyBox>
     </ApplyPanel>
   );
