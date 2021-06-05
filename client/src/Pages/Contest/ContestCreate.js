@@ -6,6 +6,7 @@ import ContestCreateInputs from '../../Components/ContestCreate/ContestCreateInp
 import Footer from '../../Components/Main/Footer';
 
 import Button from '../../Components/common/Button/Button';
+import ContestCreatEditor from '../../Components/ContestCreate/ContestCreatEditor';
 
 const ContestCreatePanel = styled.div`
   margin: 50px 200px;
@@ -25,6 +26,7 @@ const ContestCreate = () => {
       <ContestCategory />
       <ContestCreatePanel>
         <ContestCreateInputs />
+        <ContestCreatEditor />
       </ContestCreatePanel>
       <ButtonPanel>
         <Button width="1025px" text="등록" />
