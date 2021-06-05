@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as Logo } from '../../Assets/Images/logo-kr.svg';
 import Header from '../../Components/common/Header';
@@ -6,6 +6,7 @@ import Input from '../../Components/Login/Input';
 import Button from '../../Components/common/Button/Button';
 import { TextColorGray } from '../../Assets/Color/Color';
 import { LoginAPI } from '../../Api/User/user';
+import Footer from '../../Components/Main/Footer';
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -34,15 +35,23 @@ const LogoTitle = styled.h3`
 `;
 
 const Login = () => {
+  const [ID, setID] = useState('');
+  const [PW, setPW] = useState('');
   const handlerlogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await LoginAPI(email, password);
+      const response = await LoginAPI(ID, PW);
       console.log(response.data);
     } catch (err) {
-      const msg = err.response.data.message;
-      alert(msg);
+      alert(err);
     }
+  };
+
+  const onChangeID = (e) => {
+    setID(e.target.value);
+  };
+  const onChangePW = (e) => {
+    setPW(e.target.value);
   };
 
   return (
@@ -51,14 +60,21 @@ const Login = () => {
       <MainContainer>
         <Logo width={200} height={100} />
         <LogoTitle>나를 표현하는 가장 쉬운 방법</LogoTitle>
-        <Input placeholder="아이디를 입력해주세요." width="250px" type="text" />
         <Input
+          onChange={onChangeID}
+          placeholder="아이디를 입력해주세요."
+          width="250px"
+          type="text"
+        />
+        <Input
+          onChange={onChangePW}
           placeholder="비밀번호를 입력해주세요."
           width="250px"
           type="password"
         />
-        <Button text="로그인" width="250px" />
+        <Button onClick={handlerlogin} text="로그인" width="250px" />
       </MainContainer>
+      <Footer />
     </Container>
   );
 };

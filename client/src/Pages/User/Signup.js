@@ -11,6 +11,7 @@ import {
   TextColorWhite,
 } from '../../Assets/Color/Color';
 import { SignUpAPI } from '../../Api/User/user';
+import Footer from '../../Components/Main/Footer';
 
 const Container = styled.div`
   width: 100%;
@@ -148,8 +149,7 @@ const Signup = () => {
       const response = await SignUpAPI(fd);
       console.log(response);
     } catch (err) {
-      const msg = err.response.data.message;
-      alert(msg);
+      alert(err);
     }
   };
 
@@ -220,6 +220,7 @@ const Signup = () => {
         />
         <Button text="회원가입" onClick={handleSignUp} width="250px" />
       </MainContainer>
+      <Footer />
     </Container>
   );
 };
