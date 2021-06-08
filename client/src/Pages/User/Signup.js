@@ -34,7 +34,7 @@ const MainContainer = styled.div`
 const LogoTitle = styled.h3`
   font-family: 'Spoqa-Light';
   color: ${TextColorGray};
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   margin-bottom: 30px;
   letter-spacing: 5px;
 `;
@@ -74,6 +74,8 @@ const SelectImgBox = styled.button`
     left: 0;
     opacity: 0.5;
     font-size: 1rem;
+    /* 미리보기 블럭 제거 및 추가 */
+    display: ${(props) => (props.Imgsrc != '' ? 'none' : 'block')};
   }
 `;
 
@@ -157,7 +159,7 @@ const Signup = () => {
     <Container>
       <Header />
       <MainContainer>
-        <Logo width={200} height={100} />
+        {/* <Logo width={200} height={100} /> */}
         <LogoTitle>나를 표현하는 가장 쉬운 방법</LogoTitle>
         <InputFile
           ref={ImgRef}

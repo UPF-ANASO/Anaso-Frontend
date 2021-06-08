@@ -86,6 +86,7 @@ const ContestBanner = () => {
         <input type="text" />
       </BannerSearchBar>
       <Swiper
+        initialSlide={1}
         slidesPerView={3}
         centeredSlides={true}
         spaceBetween={30}

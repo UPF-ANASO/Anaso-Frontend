@@ -13,7 +13,14 @@ const HeaderDiv = styled.div`
   top: 0;
   min-width: 50vw;
   width: 100%;
+
+  /* 민석 - 추가한 코드[고정시키기] */
+  background-color: white;
   height: 30px;
+  margin-top: -30px;
+  top: 0;
+  position: sticky;
+  /* --------------- */
   padding: 20px 0;
 
   display: flex;
