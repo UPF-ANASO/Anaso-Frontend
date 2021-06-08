@@ -7,6 +7,8 @@ import Button from '../../Components/common/Button/Button';
 import { TextColorGray } from '../../Assets/Color/Color';
 import { LoginAPI } from '../../Api/User/user';
 import Footer from '../../Components/Main/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentAuthToken } from '../../Redux/actions/auth_action';
 
 const Container = styled.div`
   width: 100%;
@@ -36,6 +38,8 @@ const LogoTitle = styled.h3`
 `;
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const jwt_token = useSelector((state) => state.auth.currentToken);
   const [ID, setID] = useState('');
   const [PW, setPW] = useState('');
 
@@ -47,11 +51,11 @@ const Login = () => {
     setPW(e.target.value);
   };
 
-  const handlerlogin = async (e) => {
+  const handlelogin = async (e) => {
     e.preventDefault();
     try {
       const response = await LoginAPI(ID, PW);
-      console.log(response.data);
+      dispatch(setCurrentAuthToken(response.data.token)); // Token state 저장
     } catch (err) {
       alert(err);
     }
@@ -65,7 +69,7 @@ const Login = () => {
         <LogoTitle>나를 표현하는 가장 쉬운 방법</LogoTitle>
         <Input
           onChange={onChangeID}
-          placeholder="아이디를 입력해주세요."
+          placeholder="아이디(Email)를 입력해주세요."
           width="250px"
           type="text"
         />
@@ -75,7 +79,7 @@ const Login = () => {
           width="250px"
           type="password"
         />
-        <Button onClick={handlerlogin} text="로그인" width="250px" />
+        <Button onClick={handlelogin} text="로그인" width="250px" />
       </MainContainer>
       <Footer />
     </Container>
