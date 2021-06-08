@@ -7,6 +7,7 @@ import Button from '../../Components/common/Button/Button';
 import { TextColorGray } from '../../Assets/Color/Color';
 import { LoginAPI } from '../../Api/User/user';
 import Footer from '../../Components/Main/Footer';
+
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -29,14 +30,23 @@ const MainContainer = styled.div`
 const LogoTitle = styled.h3`
   font-family: 'Spoqa-Light';
   color: ${TextColorGray};
-  font-size: 0.5rem;
-  margin-bottom: 30px;
+  font-size: 0.9rem;
+  margin-bottom: 45px;
   letter-spacing: 5px;
 `;
 
 const Login = () => {
   const [ID, setID] = useState('');
   const [PW, setPW] = useState('');
+
+  // ID/PW
+  const onChangeID = (e) => {
+    setID(e.target.value);
+  };
+  const onChangePW = (e) => {
+    setPW(e.target.value);
+  };
+
   const handlerlogin = async (e) => {
     e.preventDefault();
     try {
@@ -47,18 +57,11 @@ const Login = () => {
     }
   };
 
-  const onChangeID = (e) => {
-    setID(e.target.value);
-  };
-  const onChangePW = (e) => {
-    setPW(e.target.value);
-  };
-
   return (
     <Container>
       <Header />
       <MainContainer>
-        <Logo width={200} height={100} />
+        <Logo width={250} height={100} />
         <LogoTitle>나를 표현하는 가장 쉬운 방법</LogoTitle>
         <Input
           onChange={onChangeID}

@@ -1,12 +1,17 @@
 import axios from 'axios';
 
-// 이미지 경로까지 저장해야함. form-data 이용
-export const SignUpAPI = (fd) => {
+export const UploadImgAPI = (fd) => {
   const config = {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
   };
+  const response = axios.post('/users/uploadProfileImage', fd, config);
+  return response;
+};
+
+// 이미지 경로까지 저장해야함. form-data 이용
+export const SignUpAPI = (fd) => {
   const response = axios.post('/users/signup', fd, config);
   return response;
 };
