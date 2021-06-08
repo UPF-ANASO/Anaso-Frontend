@@ -6,7 +6,7 @@ export const UploadImgAPI = (fd) => {
       'Content-Type': 'multipart/form-data',
     },
   };
-  const response = axios.post('/users/uploadProfileImage', fd, config);
+  const response = axios.post('/users/uploadProfileImage', fd);
   return response;
 };
 

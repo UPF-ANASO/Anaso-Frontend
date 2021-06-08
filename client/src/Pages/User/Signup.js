@@ -10,7 +10,7 @@ import {
   TextColorGray,
   TextColorWhite,
 } from '../../Assets/Color/Color';
-import { SignUpAPI } from '../../Api/User/user';
+import { SignUpAPI, UploadImgAPI } from '../../Api/User/user';
 import Footer from '../../Components/Main/Footer';
 
 const Container = styled.div`
@@ -53,8 +53,7 @@ const InputFile = styled.input`
 `;
 
 const SelectImgBox = styled.button`
-  width: 70%;
-  min-width: 200px;
+  width: 250px;
   min-height: 200px;
   border: 1px solid ${PrimaryColor2};
   border-radius: 50px;
@@ -118,10 +117,9 @@ const Signup = () => {
   const handleSelectImg = (e) => {
     e.preventDefault();
     ImgRef.current.click();
-    console.log(imgURL);
   };
 
-  const handleChangeFile = (e) => {
+  const handleChangeFile = async (e) => {
     let reader = new FileReader();
     reader.onload = () => {
       const base = reader.result;
@@ -133,6 +131,15 @@ const Signup = () => {
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
       SetImgFile(e.target.files[0]);
+
+      const fd = new FormData();
+      fd.append('profileImage', imgFile);
+      try {
+        const response = await UploadImgAPI(fd);
+        console.log(response.data);
+      } catch (err) {
+        alert(err);
+      }
     }
   };
 
