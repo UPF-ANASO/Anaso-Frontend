@@ -1,22 +1,18 @@
 import axios from 'axios';
 
+// 사진 업로드하기
 export const UploadImgAPI = (fd) => {
-  const config = {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  };
   const response = axios.post('/users/uploadProfileImage', fd);
   return response;
 };
 
 // 이미지 경로까지 저장해야함. form-data 이용
 export const SignUpAPI = (fd) => {
-  const response = axios.post('/users/signup', fd, config);
+  const response = axios.post('/users/signup', fd);
   return response;
 };
 
-// JWT Token 받기
+// JWT Token API 받기
 export const LoginAPI = (email, password) => {
   const response = axios.post('/users/signin', {
     email: email,

@@ -1,10 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { PrimaryColor, TextColorWhite } from '../../Assets/Color/Color';
+import {
+  PrimaryColor,
+  TextColorWhite,
+  TextColorBlack,
+} from '../../Assets/Color/Color';
 import Button from '../common/Button/Button';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:visited {
+    color: ${TextColorBlack};
+  }
 `;
 
 const TitleText = styled.h2`
@@ -36,8 +49,12 @@ const Title = () => {
         찾아보세요.
       </TitleText>
       <ButtonContainer>
-        <Button text="로그인" />
-        <Button text="회원가입" color={TextColorWhite} />
+        <StyledLink to="/login">
+          <Button text="로그인" />
+        </StyledLink>
+        <StyledLink to="/signup">
+          <Button text="회원가입" color={TextColorWhite} />
+        </StyledLink>
       </ButtonContainer>
     </Container>
   );

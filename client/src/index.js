@@ -5,7 +5,7 @@ import './Assets/CSS/Font.css';
 import reducer from './Redux/reducers';
 import { Provider } from 'react-redux';
 import configureStore from './Store/store';
-
+import axios from 'axios';
 const store = configureStore(reducer);
 
 ReactDOM.render(
