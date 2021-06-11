@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PrimaryColor, PrimaryColor2 } from '../../Assets/Color/Color';
 import Header from '../../Components/common/Header';
@@ -8,6 +10,7 @@ import ImageSession from '../../Components/Main/ImageSession';
 import PortfolioList from '../../Components/Main/PortfolioList';
 import Profile from '../../Components/Main/Profile';
 import Title from '../../Components/Main/Title';
+import { setCurrentAuthToken } from '../../Redux/actions/auth_action';
 
 const Container = styled.div`
   width: 100%;
@@ -43,6 +46,7 @@ const ImageSessionContainer = styled.div`
 const AfterMainContainer = styled.div`
   margin: 0 auto;
   width: 90%;
+  margin-top: 30px;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -110,38 +114,53 @@ const ContestContainer = styled.div`
 `;
 
 const Main = () => {
+  const dispatch = useDispatch();
+  const [Token, setToken] = useState('');
+
+  useEffect(() => {
+    // Token 가져오기
+    const token = localStorage.getItem('token');
+    if (token) {
+      setToken(token);
+      dispatch(setCurrentAuthToken(token));
+    }
+  }, []);
+
   return (
     <Container>
       <Header />
-      <MainContainer>
-        <TitleSessionContainer>
-          <Title />
-        </TitleSessionContainer>
-        <ImageSessionContainer>
-          <ImageSession />
-        </ImageSessionContainer>
-      </MainContainer>
-      {/* -------- 로그인 후 ----------- */}
-      {/* 포트폴리오 리스트 및 프로필 */}
-      {/* <AfterMainContainer>
-        <TopSession>
-          <PortfolioContainer>
-            <h3>최신 포트폴리오</h3>
-            <PortfolioList />
-          </PortfolioContainer>
-          <ProfileContainer>
-            <Profile />
-          </ProfileContainer>
-        </TopSession>
-        <MiddleSession>
-          <h3>최신 공모전 모집글</h3>
-          <ContestContainer>
-            <ContestCard />
-            <ContestCard />
-            <ContestCard />
-          </ContestContainer>
-        </MiddleSession>
-      </AfterMainContainer> */}
+      {!Token ? (
+        // 로그인 전
+        <MainContainer>
+          <TitleSessionContainer>
+            <Title />
+          </TitleSessionContainer>
+          <ImageSessionContainer>
+            <ImageSession />
+          </ImageSessionContainer>
+        </MainContainer>
+      ) : (
+        // 로그인 후
+        <AfterMainContainer>
+          <TopSession>
+            <PortfolioContainer>
+              <h3>최신 포트폴리오</h3>
+              <PortfolioList />
+            </PortfolioContainer>
+            <ProfileContainer>
+              <Profile />
+            </ProfileContainer>
+          </TopSession>
+          <MiddleSession>
+            <h3>최신 공모전 모집글</h3>
+            <ContestContainer>
+              <ContestCard />
+              <ContestCard />
+              <ContestCard />
+            </ContestContainer>
+          </MiddleSession>
+        </AfterMainContainer>
+      )}
       <Footer />
     </Container>
   );

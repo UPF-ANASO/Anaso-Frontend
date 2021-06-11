@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as Logo } from '../../Assets/Images/logo-en.svg';
 import {
@@ -8,6 +8,16 @@ import {
 } from '../../Assets/Color/Color';
 
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { CLEAR_TOKEN, CLEAR_USER_INFO } from '../../Redux/actions/types';
+import {
+  clearToken,
+  setCurrentAuthToken,
+} from '../../Redux/actions/auth_action';
+import {
+  clearUserInfo,
+  setCurrentUserInfo,
+} from '../../Redux/actions/userInfo_action';
 
 const HeaderDiv = styled.div`
   top: 0;
@@ -60,6 +70,14 @@ const StyledLink = styled(Link)`
 `;
 
 function Header() {
+  const dispatch = useDispatch();
+  const handleLogout = (e) => {
+    // 토큰/유저정보/로컬스토리지 토큰 삭제
+    localStorage.removeItem('token');
+    dispatch(clearToken());
+    dispatch(clearUserInfo());
+  };
+
   return (
     <HeaderDiv>
       <LogoDiv>
@@ -77,12 +95,22 @@ function Header() {
         <Subtitle>스터디</Subtitle>
       </StyledLink>
       <UserDiv>
-        <StyledLink to="/login">
-          <Subtitle>로그인</Subtitle>
-        </StyledLink>
-        <StyledLink to="/signup">
-          <Subtitle>회원가입</Subtitle>
-        </StyledLink>
+        {!token ? (
+          <>
+            <StyledLink to="/login">
+              <Subtitle>로그인</Subtitle>
+            </StyledLink>
+            <StyledLink to="/signup">
+              <Subtitle>회원가입</Subtitle>
+            </StyledLink>
+          </>
+        ) : (
+          <>
+            <StyledLink onClick={handleLogout}>
+              <Subtitle>로그아웃</Subtitle>
+            </StyledLink>
+          </>
+        )}
       </UserDiv>
     </HeaderDiv>
   );

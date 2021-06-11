@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Logo } from '../../Assets/Images/logo-kr.svg';
-import Header from '../../Components/common/Header';
-import Input from '../../Components/Login/Input';
-import Button from '../../Components/common/Button/Button';
 import { TextColorGray } from '../../Assets/Color/Color';
 import { LoginAPI } from '../../Api/User/user';
 import Footer from '../../Components/Main/Footer';
-import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+import Header from '../../Components/common/Header';
+import Input from '../../Components/Login/Input';
+import Button from '../../Components/common/Button/Button';
 import { setCurrentAuthToken } from '../../Redux/actions/auth_action';
 
 const Container = styled.div`
@@ -39,6 +40,7 @@ const LogoTitle = styled.h3`
 
 const Login = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const jwt_token = useSelector((state) => state.auth.currentToken);
   const [ID, setID] = useState('');
   const [PW, setPW] = useState('');
@@ -55,9 +57,14 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await LoginAPI(ID, PW);
+      console.log(response.data.token);
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+      }
       dispatch(setCurrentAuthToken(response.data.token)); // Token state 저장
+      history.replace('/');
     } catch (err) {
-      alert(err);
+      console.log(err);
     }
   };
 

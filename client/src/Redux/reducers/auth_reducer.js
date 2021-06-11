@@ -14,7 +14,7 @@ export default function (state = initialAuthState, action) {
     case CLEAR_TOKEN:
       return {
         ...state,
-        currentToken: null,
+        currentToken: '',
       };
     default:
       return state;
