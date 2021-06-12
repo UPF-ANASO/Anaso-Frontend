@@ -8,7 +8,7 @@ import {
 } from '../../Assets/Color/Color';
 
 import { Link, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { CLEAR_TOKEN, CLEAR_USER_INFO } from '../../Redux/actions/types';
 import {
   clearToken,
@@ -72,6 +72,9 @@ const StyledLink = styled(Link)`
 function Header() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const token = useSelector((state) => {
+    state.auth.currentToken;
+  }, shallowEqual);
   const handleLogout = (e) => {
     // 토큰/유저정보/로컬스토리지 토큰 삭제
     localStorage.removeItem('token');
