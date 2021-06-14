@@ -7,26 +7,18 @@ import MyStudy from '../../Components/PorfoliDetail/MyStudy';
 import Header from '../../Components/common/Header';
 
 const PortfolioDetailDiv = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-content: space-around;
-  flex-wrap: wrap;
-  width: 100vw;
-  height: 100vh;
+  position: relative;
+  /* width: 100vw;
+  height: 100vh; */
   /* font-family: 'Spoqa-Light'; */
 `;
 
 function PortfolioDetail() {
   return (
-    <>
+    <PortfolioDetailDiv>
       <Header />
-      <PortfolioDetailDiv>
-        <MyIntro />
-        <MyContest />
-        <MyStudy />
-        <MyPorfolio />
-      </PortfolioDetailDiv>
-    </>
+      <MyIntro />
+    </PortfolioDetailDiv>
   );
 }
 
