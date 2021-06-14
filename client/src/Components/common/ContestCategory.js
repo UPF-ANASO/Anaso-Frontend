@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import { PrimaryColor, BackgroundColor } from '../../Assets/Color/Color';
 
 const CategoryPanel = styled.div`
+  position: sticky;
+  top: 71px;
+  z-index: 99;
+
   width: 100%;
   height: 40px;
   padding: 10px 0 0 0;
@@ -14,6 +18,7 @@ const CategoryPanel = styled.div`
   justify-content: center;
 
   border-bottom: 1px solid ${BackgroundColor};
+  background-color: rgba(256, 256, 256, 0.9);
 `;
 
 const CategoryLink = styled(Link)`
@@ -50,7 +55,7 @@ const CategoryLink = styled(Link)`
     background-color: ${PrimaryColor};
   }
   &:hover {
-    font-family: 'Spoqa-Medium';
+    font-family: 'Spoqa-Regular';
 
     &:after {
       width: 100%;
