@@ -11,12 +11,12 @@ const CustomButton = styled.button`
   color: ${(props) =>
     props.color === TextColorWhite ? PrimaryColor : TextColorWhite};
   background-color: ${(props) => props.color || PrimaryColor};
+  font-family: 'Spoqa-Regular';
   :hover {
     cursor: pointer;
     transition: 0.3s;
     color: ${(props) => (props.color ? props.color : PrimaryColor)};
-    background-color: ${(props) =>
-      props.color === TextColorWhite ? PrimaryColor : TextColorWhite};
+    background-color: ${TextColorWhite};
   }
 `;
 
