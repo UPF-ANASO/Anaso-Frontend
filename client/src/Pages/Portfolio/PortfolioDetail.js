@@ -13,12 +13,41 @@ const PortfolioDetailDiv = styled.div`
   /* font-family: 'Spoqa-Light'; */
 `;
 
+const SmallTitle = styled.div`
+  /* display: inline-block; */
+  font-family: 'Spoqa-Regular';
+  font-size: 30px;
+  /* background-color: white; */
+  display: flex;
+  /* flex-basis: 100%; */
+  align-items: center;
+  /* color: rgba(0, 0, 0, 0.35); */
+  /* font-size: 12px; */
+  margin: 8px 0px;
+
+  &::before,
+  &::after {
+    content: '';
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.35);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 16px;
+  }
+`;
+
 function PortfolioDetail() {
   return (
-    <PortfolioDetailDiv>
+    <>
       <Header />
-      <MyIntro />
-    </PortfolioDetailDiv>
+      <PortfolioDetailDiv>
+        <MyIntro />
+        <SmallTitle>포트폴리오</SmallTitle>
+        <MyPorfolio />
+        <SmallTitle>공모전</SmallTitle>
+      </PortfolioDetailDiv>
+    </>
   );
 }
 
