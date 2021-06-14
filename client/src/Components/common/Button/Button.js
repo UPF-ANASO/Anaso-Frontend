@@ -5,7 +5,8 @@ import styled from 'styled-components';
 const CustomButton = styled.button`
   width: ${(props) => props.width || '150px'};
   height: 40px;
-  border: 2px solid ${PrimaryColor};
+  border: 2px solid
+    ${(props) => (props.color === TextColorWhite ? PrimaryColor : props.color)};
   border-radius: 5px;
   color: ${(props) =>
     props.color === TextColorWhite ? PrimaryColor : TextColorWhite};
@@ -13,8 +14,7 @@ const CustomButton = styled.button`
   :hover {
     cursor: pointer;
     transition: 0.3s;
-    color: ${(props) =>
-      props.color === TextColorWhite ? TextColorWhite : PrimaryColor};
+    color: ${(props) => (props.color ? props.color : PrimaryColor)};
     background-color: ${(props) =>
       props.color === TextColorWhite ? PrimaryColor : TextColorWhite};
   }
