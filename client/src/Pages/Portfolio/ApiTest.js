@@ -27,9 +27,9 @@ function ApiTest() {
         // loading 값 true
         setLoading(true);
         // 응답을 res 에 저장.
-        const res = await axios.get('projects/lists');
+        const list = ProjectListAPI();
         // console.log(res.data[0]);
-        setTests(res.data);
+        setTests(list.data);
       } catch (e) {
         // 만약 오류가 생기면 여기서 catch
         setError(e); // error : true
@@ -41,7 +41,7 @@ function ApiTest() {
     // 프젝 생성 api 실행 ..
     // const post = ProjectCreateAPI();
     // 프젝 리스트 api 실행 ..
-    const list = ProjectListAPI();
+
     // console.log(post);
     console.log(list);
     // console.log(tests);
