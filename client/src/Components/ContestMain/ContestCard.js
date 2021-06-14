@@ -15,7 +15,7 @@ const CardPanel = styled(Link)`
   align-items: center;
   flex-direction: column;
 
-  box-shadow: 0px 0px 30px rgba(57, 40, 166, 0.15);
+  box-shadow: 0px 0px 20px rgba(57, 40, 166, 0.15);
   border-radius: 20px;
   text-decoration: none;
   color: black;
@@ -40,7 +40,7 @@ const CardTitle = styled.div`
   & > span:first-of-type {
     width: 100%;
     padding-top: 4px;
-    max-width: 230px;
+    max-width: 220px;
 
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -55,6 +55,9 @@ const CardTitle = styled.div`
     background-color: #f57168;
     color: white;
   }
+  & > span.close {
+    background-color: #b0b0b0;
+  }
 `;
 
 const CardContent = styled.div`
@@ -67,7 +70,7 @@ const CardContent = styled.div`
 
 const CardBottom = styled.div`
   width: 100%;
-  margin-top: 5px;
+  margin-top: 10px;
 
   display: flex;
   justify-content: space-between;
@@ -85,15 +88,24 @@ const CardBottom = styled.div`
 `;
 
 const ContestCard = ({ data }) => {
+  const deadLine = new Date(data.deadLine); // 설정된 데드라인
+  const now = new Date(); // 현재 날짜
+  const gap = now.getTime() - deadLine.getTime();
+  const dday = Math.floor(gap / (1000 * 60 * 60 * 24)) * -1;
+
   return (
     <CardPanel to="/contestdetail">
-      <img src={data.img} alt="" />
+      <img src={data.poster} alt="" />
       <CardTitle>
         <span>{data.title}</span>
-        <span>D-{data.dday}</span>
+        {dday > 0 ? (
+          <span>D-{dday}</span>
+        ) : (
+          <span className="close">모집 마감</span>
+        )}
       </CardTitle>
       <CardContent>
-        <p>{data.content}</p>
+        <p>{data.detail}</p>
       </CardContent>
       <CardBottom>
         {/* 나중에 링크 처리해줘야 하는 곳 */}
@@ -101,7 +113,7 @@ const ContestCard = ({ data }) => {
           <span>자세히 보기</span>
           <Arrow />
         </div>
-        <span>조회수 {data.hits}</span>
+        <span>조회수 {data.hitCount}</span>
       </CardBottom>
     </CardPanel>
   );
