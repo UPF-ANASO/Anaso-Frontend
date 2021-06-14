@@ -10,14 +10,14 @@ export const ProjectListAPI = async () => {
 export const ProjectCreateAPI = async (
   title,
   participant,
-  endDate,
+  date,
   thumbnail,
   role,
 ) => {
   const api = axios.post('projects/create', {
-    title: '고양이는 귀여워 프로젝트',
+    title: title,
     participant: '밈미, 옹이',
-    endDate: '2021-06-22',
+    endDate: date,
     thumbnail: '이미지 들어갑니다',
     role: '팀장',
   });

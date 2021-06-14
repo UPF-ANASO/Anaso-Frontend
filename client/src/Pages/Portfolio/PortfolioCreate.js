@@ -24,11 +24,15 @@ function PortfolioCreate() {
     });
     console.log({ title });
     console.log({ date });
+  };
 
-    const handlesubmit = (event) => {
-      event.preventDefault();
-      console.log('submit');
-    };
+  const handlesubmit = (e) => {
+    e.preventDefault();
+    // title = e.target.title.value;
+    // date = e.target.date.value;
+    console.log({ title });
+    console.log({ date });
+    ProjectCreateAPI(title, date);
   };
   return (
     <form onSubmit={handlesubmit}>
@@ -48,7 +52,7 @@ function PortfolioCreate() {
         <span>역할:</span>
         <span>팀장</span>
       </p>
-      <input type="button" value="저장" />
+      <input type="submit" value="저장" />
     </form>
   );
 }

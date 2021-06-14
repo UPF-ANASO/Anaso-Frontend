@@ -39,10 +39,10 @@ function ApiTest() {
     // 함수 fetchUsers() 실행
     fetchUsers();
     // 프젝 생성 api 실행 ..
-    const post = ProjectCreateAPI();
+    // const post = ProjectCreateAPI();
     // 프젝 리스트 api 실행 ..
     const list = ProjectListAPI();
-    console.log(post);
+    // console.log(post);
     console.log(list);
     // console.log(tests);
   }, []);
