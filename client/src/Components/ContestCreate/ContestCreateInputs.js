@@ -1,10 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 
 import { PrimaryColor } from '../../Assets/Color/Color';
-import Button from '../common/Button/Button';
 
 const TitleInput = styled.div`
   margin-bottom: 30px;
@@ -51,42 +48,7 @@ const DetailInput = styled.div`
   }
 `;
 
-const QuillPanel = styled.div`
-  margin: 50px 0;
-  & > * {
-    font-family: 'Spoqa-Light';
-  }
-`;
-
 const ContestCreateInputs = () => {
-  const modules = {
-    toolbar: [
-      [{ header: [1, 2, false] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      ['link', 'image'],
-      [{ align: [] }, { color: [] }, { background: [] }], // dropdown with defaults from theme
-      ['clean'],
-    ],
-  };
-
-  const formats = [
-    'header',
-    'bold',
-    'italic',
-    'underline',
-    'strike',
-    'blockquote',
-    'list',
-    'bullet',
-    'indent',
-    'link',
-    'image',
-    'align',
-    'color',
-    'background',
-  ];
-
   return (
     <>
       <TitleInput>
@@ -119,15 +81,6 @@ const ContestCreateInputs = () => {
         <span>대표 이미지</span>
         <input type="file" accept="image/png, image/jpeg" />
       </DetailInput>
-      <QuillPanel>
-        <ReactQuill
-          theme="snow"
-          style={{ height: '500px' }}
-          theme="snow"
-          modules={modules}
-          formats={formats}
-        />
-      </QuillPanel>
     </>
   );
 };

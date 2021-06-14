@@ -4,6 +4,7 @@ import { ReactComponent as Logo } from '../../Assets/Images/logo-en.svg';
 import {
   TextColorBlack,
   ShadowColor,
+  BackgroundColor,
   PrimaryColor,
 } from '../../Assets/Color/Color';
 
@@ -21,6 +22,7 @@ import {
 
 const HeaderDiv = styled.div`
   top: 0;
+  z-index: 99;
   min-width: 50vw;
   width: 100%;
 
@@ -36,6 +38,7 @@ const HeaderDiv = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border-bottom: 1px solid ${BackgroundColor};
   box-shadow: 0 3px 10px ${ShadowColor};
   color: ${TextColorBlack};
 `;
