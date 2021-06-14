@@ -1,81 +1,93 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ContestCard from './ContestCard';
 import styled from 'styled-components';
 
 import Button from '../common/Button/Button';
 import { Link } from 'react-router-dom';
 
+import { ContestListAPI } from '../../Api/Contest/Contest';
+import Loading from '../common/Loading/Loading';
+import { PointColor } from '../../Assets/Color/Color';
+
 const CardListPanel = styled.div`
   width: 100%;
-  margin: 3% 0 10% 0;
+  margin: 60px 0 10% 0;
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(33%, auto));
-  grid-gap: 3% 0;
+  grid-gap: 60px 0;
   justify-items: center;
 `;
 
-const ButtonsPanel = styled.div`
-  width: 100%;
+const FilterAndButtonPanel = styled.div`
+  width: 95%;
   height: fit-content;
-  margin-top: 20px;
+  margin: 30px auto;
 
   display: flex;
   justify-content: space-between;
 `;
 
-const FilterButtonsPanel = styled.div`
-  & button:first-of-type {
-    margin-right: 10px;
+const FilterDropDowns = styled.div`
+  & select {
+    width: 115px;
+    height: 40px;
+    padding: 4px 3px;
+    font-family: 'Spoqa-Regular';
+
+    font-size: 0.8em;
+    color: #777;
+    border: 1px solid #e6e6e6;
   }
 `;
 
-// 테스트용 데이터
-const testdata = [
-  {
-    id: 1,
-    img: 'https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/7f607877ec4844b3a4e22afd20c3cfb8.jpg',
-    title: '2021 위핏 UX∙마케팅 아이디어 공모전',
-    dday: 3,
-    content:
-      '고려대학교에서 주최하는 대학생 언택트 서비스를 주제로 해커톤을 진행합니다.',
-    hits: 1,
-  },
-  {
-    id: 2,
-    img: 'https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/7f607877ec4844b3a4e22afd20c3cfb8.jpg',
-    title: '2021 위핏 UX∙마케팅 아이디어 공모전',
-    dday: 3,
-    content:
-      '고려대학교에서 주최하는 대학생 언택트 서비스를 주제로 해커톤을 진행합니다.',
-    hits: 1,
-  },
-  {
-    id: 3,
-    img: 'https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/7f607877ec4844b3a4e22afd20c3cfb8.jpg',
-    title: '2021 위핏 UX∙마케팅 아이디어 공모전',
-    dday: 3,
-    content:
-      '고려대학교에서 주최하는 대학생 언택트 서비스를 주제로 해커톤을 진행합니다.',
-    hits: 1,
-  },
-];
-
 const ContestCardList = () => {
+  const [contestDatas, setcontestDatas] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchContestDatas = async () => {
+      try {
+        // 값 초기화
+        setError(null);
+        setLoading(true);
+        setcontestDatas(null);
+
+        const contestRes = (await ContestListAPI()).data;
+        setcontestDatas(contestRes);
+      } catch (e) {
+        // 만약 오류가 생기면 여기서 catch
+        setError(e); // error : true
+        console.log(e);
+      }
+      setLoading(false); // 응답 다 받았으면 loading을 종료 (false 값으로 바꿔준다.)
+    };
+    // 함수 fetchUsers() 실행
+    fetchContestDatas();
+  }, []);
+  if (loading) return <Loading />;
+  if (error) return <div>에러 발생</div>;
+  if (!contestDatas) return null;
   return (
     <>
-      <ButtonsPanel>
-        <FilterButtonsPanel>
-          <Button width="80px" text="마감기한 순" />
-          <Button width="100px" text="조회수 높은 순" color="#7d7d7d" />
-        </FilterButtonsPanel>
+      <FilterAndButtonPanel>
+        <FilterDropDowns>
+          <select name="" id="">
+            <option value="" value="default">
+              마감 기한순
+            </option>
+            <option value="">조회 많은순</option>
+            <option value="">조회 적은순</option>
+          </select>
+        </FilterDropDowns>
         <Link to="/contestcreate">
-          <Button width="80px" text="새 글 쓰기" />
+          <Button width="80px" text="새 글 쓰기" color={PointColor} />
         </Link>
-      </ButtonsPanel>
+      </FilterAndButtonPanel>
       <CardListPanel>
-        {testdata.map((data) => (
-          <ContestCard data={data} key={data.id} />
+        {contestDatas.map((data, index) => (
+          <ContestCard data={data} key={index} />
         ))}
       </CardListPanel>
     </>

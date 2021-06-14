@@ -21,6 +21,7 @@ SwiperCore.use([Navigation]);
 const BannerPanel = styled.div`
   width: 100%;
   padding-top: 30px;
+  margin-top: 30px;
 
   background-color: rgba(126, 219, 176, 0.3);
   box-shadow: inset 0px 0px 30px rgba(57, 40, 166, 0.15);
