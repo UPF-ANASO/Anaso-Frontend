@@ -12,26 +12,6 @@ const PortfolioListDiv = styled.div`
 `;
 
 function PortfolioList() {
-  const [porfols, setPorfols] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchPorfols = async () => {
-      try {
-        // 값 초기화
-        setPorfols(null);
-        setLoading(true);
-        setError(null);
-
-        const porfolRes = ProjectListAPI();
-        setPorfols(porfolRes.data);
-        console.log(porfolRes.data);
-      } catch (e) {
-        setError(e);
-      }
-    };
-  });
   return (
     <>
       <Header />

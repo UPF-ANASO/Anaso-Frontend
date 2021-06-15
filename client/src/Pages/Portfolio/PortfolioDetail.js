@@ -5,31 +5,27 @@ import MyIntro from '../../Components/PorfoliDetail/MyIntro';
 import MyPorfolio from '../../Components/PorfoliDetail/MyPorfolio';
 import MyStudy from '../../Components/PorfoliDetail/MyStudy';
 import Header from '../../Components/common/Header';
+import { PrimaryColor, TextColorBlack } from '../../Assets/Color/Color';
 
 const PortfolioDetailDiv = styled.div`
-  position: relative;
-  /* width: 100vw;
-  height: 100vh; */
-  /* font-family: 'Spoqa-Light'; */
+  margin: 0 auto;
 `;
 
 const SmallTitle = styled.div`
   /* display: inline-block; */
-  font-family: 'Spoqa-Regular';
+  width: 80%;
+  font-family: 'Spoqa-Light';
+  color: ${TextColorBlack};
   font-size: 30px;
-  /* background-color: white; */
   display: flex;
-  /* flex-basis: 100%; */
   align-items: center;
-  /* color: rgba(0, 0, 0, 0.35); */
-  /* font-size: 12px; */
-  margin: 8px 0px;
+  margin: 0 auto;
 
-  &::before,
   &::after {
     content: '';
     flex-grow: 1;
-    background: rgba(0, 0, 0, 0.35);
+    background: ${PrimaryColor};
+    /* background: ${TextColorBlack}; */
     height: 1px;
     font-size: 0px;
     line-height: 0px;
@@ -45,7 +41,7 @@ function PortfolioDetail() {
         <MyIntro />
         <SmallTitle>포트폴리오</SmallTitle>
         <MyPorfolio />
-        <SmallTitle>공모전</SmallTitle>
+        <SmallTitle>참여 중인 공모전</SmallTitle>
       </PortfolioDetailDiv>
     </>
   );
