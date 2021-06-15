@@ -36,7 +36,7 @@ const ContsetBannerCard = ({ data }) => {
 
   return (
     <>
-      <BannerCardShortcut to="/contestdetail">
+      <BannerCardShortcut to={`/contestdetail/${data._id}`}>
         <span>Read More</span>
         <Arrow />
       </BannerCardShortcut>

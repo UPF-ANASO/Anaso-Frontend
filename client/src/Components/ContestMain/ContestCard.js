@@ -74,16 +74,19 @@ const CardBottom = styled.div`
 
   display: flex;
   justify-content: space-between;
-  & > div {
-    cursor: pointer;
+  & > span {
+    font-size: 0.9em;
   }
-  & > div > span {
+`;
+
+const CardShortcut = styled.div`
+  cursor: pointer;
+  text-decoration: none;
+
+  & > span {
     margin-right: 6px;
     font-family: 'Spoqa-Bold';
     color: ${PrimaryColor};
-  }
-  & > span {
-    font-size: 0.9em;
   }
 `;
 
@@ -94,7 +97,7 @@ const ContestCard = ({ data }) => {
   const dday = Math.floor(gap / (1000 * 60 * 60 * 24)) * -1;
 
   return (
-    <CardPanel to="/contestdetail">
+    <CardPanel to={`/contestdetail/${data._id}`}>
       <img src={data.poster} alt="" />
       <CardTitle>
         <span>{data.title}</span>
@@ -108,11 +111,10 @@ const ContestCard = ({ data }) => {
         <p>{data.detail}</p>
       </CardContent>
       <CardBottom>
-        {/* 나중에 링크 처리해줘야 하는 곳 */}
-        <div>
+        <CardShortcut>
           <span>자세히 보기</span>
           <Arrow />
-        </div>
+        </CardShortcut>
         <span>조회수 {data.hitCount}</span>
       </CardBottom>
     </CardPanel>

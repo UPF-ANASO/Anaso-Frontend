@@ -11,14 +11,14 @@ const ContestDetailPanel = styled.div`
   margin: 60px 200px;
 `;
 
-const ContestDetail = () => {
+const ContestDetail = ({ match, history }) => {
   return (
     <div>
       <Header />
       <ContestCategory />
       <ContestDetailPanel>
-        <ContestDetailTitle />
-        <ContestDetailContents />
+        <ContestDetailTitle match={match} />
+        <ContestDetailContents match={match} history={history} />
       </ContestDetailPanel>
       <Footer />
     </div>

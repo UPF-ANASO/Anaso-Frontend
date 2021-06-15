@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import ContestDetailApply from './ContestDetailApply';
+import Loading from '../common/Loading/Loading';
+import Error from '../common/Error/Error';
 
 import { PrimaryColor } from '../../Assets/Color/Color';
+
+import { ContestDetailAPI } from '../../Api/Contest/Contest';
 
 const ContentsPanel = styled.div`
   margin: 100px 0;
@@ -35,7 +39,34 @@ const testdata = {
     'Praesent tristique felis, quis pharetra, viverra. Laoreet est nunc fermentum vulputate risus odio ipsum diam. Nulla id et, feugiat ultrices tortor lacus non facilisi. Enim dui, id in id at morbi. Mattis ac tempor, vestibulum ac dapibus rhoncus, justo posuere. Et vel pretium et adipiscing. Libero ut tristique pharetra, aliquam.',
 };
 
-const ContestDetailContents = () => {
+const ContestDetailContents = ({ match, history }) => {
+  const [contestDatas, setContestDatas] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchContestDatas = async () => {
+      try {
+        // 값 초기화
+        setError(null);
+        setLoading(true);
+        setContestDatas(null);
+
+        const contestRes = (await ContestDetailAPI(match.params.id)).data;
+        setContestDatas(contestRes);
+      } catch (e) {
+        // 만약 오류가 생기면 여기서 catch
+        setError(e); // error : true
+        console.log(match.params.id);
+        console.log(e);
+      }
+      setLoading(false); // 응답 다 받았으면 loading을 종료 (false 값으로 바꿔준다.)
+    };
+    fetchContestDatas();
+  }, []);
+  if (loading) return <Loading />;
+  if (error) return <Error />;
+  if (!contestDatas) return null;
   return (
     <ContentsPanel>
       <TextBox>
