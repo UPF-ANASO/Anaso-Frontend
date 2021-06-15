@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 import { ContestListAPI } from '../../Api/Contest/Contest';
 import Loading from '../common/Loading/Loading';
+import Error from '../common/Error/Error';
 import { PointColor } from '../../Assets/Color/Color';
 
 const CardListPanel = styled.div`
@@ -15,7 +16,7 @@ const CardListPanel = styled.div`
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(33%, auto));
-  grid-gap: 60px 0;
+  grid-gap: 100px 0;
   justify-items: center;
 `;
 
@@ -42,7 +43,7 @@ const FilterDropDowns = styled.div`
 `;
 
 const ContestCardList = () => {
-  const [contestDatas, setcontestDatas] = useState(null);
+  const [contestDatas, setContestDatas] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -52,10 +53,10 @@ const ContestCardList = () => {
         // 값 초기화
         setError(null);
         setLoading(true);
-        setcontestDatas(null);
+        setContestDatas(null);
 
         const contestRes = (await ContestListAPI()).data;
-        setcontestDatas(contestRes);
+        setContestDatas(contestRes);
       } catch (e) {
         // 만약 오류가 생기면 여기서 catch
         setError(e); // error : true
@@ -63,11 +64,10 @@ const ContestCardList = () => {
       }
       setLoading(false); // 응답 다 받았으면 loading을 종료 (false 값으로 바꿔준다.)
     };
-    // 함수 fetchUsers() 실행
     fetchContestDatas();
   }, []);
   if (loading) return <Loading />;
-  if (error) return <div>에러 발생</div>;
+  if (error) return <Error />;
   if (!contestDatas) return null;
   return (
     <>
@@ -86,8 +86,8 @@ const ContestCardList = () => {
         </Link>
       </FilterAndButtonPanel>
       <CardListPanel>
-        {contestDatas.map((data, index) => (
-          <ContestCard data={data} key={index} />
+        {contestDatas.map((data) => (
+          <ContestCard data={data} key={data._id} />
         ))}
       </CardListPanel>
     </>
