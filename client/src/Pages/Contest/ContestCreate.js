@@ -7,6 +7,7 @@ import Footer from '../../Components/Main/Footer';
 
 import Button from '../../Components/common/Button/Button';
 import ContestCreatEditor from '../../Components/ContestCreate/ContestCreatEditor';
+import { PointColor } from '../../Assets/Color/Color';
 
 const ContestCreatePanel = styled.div`
   margin: 50px 200px;
@@ -17,6 +18,11 @@ const ButtonPanel = styled.div`
   padding: 10px 0 50px 0;
   display: flex;
   justify-content: center;
+
+  & > button {
+    font-size: 1rem;
+    font-family: 'Spoqa-Bold';
+  }
 `;
 
 const ContestCreate = () => {
@@ -29,7 +35,7 @@ const ContestCreate = () => {
         <ContestCreatEditor />
       </ContestCreatePanel>
       <ButtonPanel>
-        <Button width="1025px" text="등록" />
+        <Button width="1025px" text="등록" color={PointColor} />
       </ButtonPanel>
       <Footer />
     </>
