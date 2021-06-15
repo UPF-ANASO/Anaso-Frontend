@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import ContestCreateInputs from '../../Components/ContestCreate/ContestCreateInputs';
+
 import Header from '../../Components/common/Header';
 import ContestCategory from '../../Components/common/ContestCategory';
 import Footer from '../../Components/Main/Footer';
+import ContestEditInputs from '../../Components/ContestEdit/ContestEditInputs';
+import ContestEditEditor from '../../Components/ContestEdit/ContestEditEditor';
 
 import Button from '../../Components/common/Button/Button';
+import { PointColor } from '../../Assets/Color/Color';
 
-const ContestCreatePanel = styled.div`
+const ContestEditPanel = styled.div`
   margin: 50px 200px;
 `;
 
@@ -16,6 +19,11 @@ const ButtonPanel = styled.div`
   padding: 10px 0 50px 0;
   display: flex;
   justify-content: center;
+
+  & > button {
+    font-size: 1rem;
+    font-family: 'Spoqa-Bold';
+  }
 `;
 
 const ContestCreate = () => {
@@ -23,11 +31,12 @@ const ContestCreate = () => {
     <>
       <Header />
       <ContestCategory />
-      <ContestCreatePanel>
-        <ContestCreateInputs />
-      </ContestCreatePanel>
+      <ContestEditPanel>
+        <ContestEditInputs />
+        <ContestEditEditor />
+      </ContestEditPanel>
       <ButtonPanel>
-        <Button width="1025px" text="수정" />
+        <Button width="1025px" text="수정" color={PointColor} />
       </ButtonPanel>
       <Footer />
     </>
