@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
 
 // import Swiper core and required modules
 import SwiperCore, { Navigation } from 'swiper/core';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/swiper.min.css';
 import 'swiper/components/navigation/navigation.min.css';
 
+import ContsetBannerCard from './ContsetBannerCard';
+
 import '../../Assets/CSS/ContestBanner.css';
-import { ReactComponent as Arrow } from '../../Assets/Images/icon-rightarrow.svg';
 import { ReactComponent as Search } from '../../Assets/Images/icon-search.svg';
-import { PrimaryColor } from '../../Assets/Color/Color';
+
+import { ContestListAPI } from '../../Api/Contest/Contest';
+import Loading from '../common/Loading/Loading';
+import Error from '../common/Error/Error';
 
 // install Swiper modules
 SwiperCore.use([Navigation]);
@@ -21,7 +24,6 @@ SwiperCore.use([Navigation]);
 const BannerPanel = styled.div`
   width: 100%;
   padding-top: 30px;
-  margin-top: 30px;
 
   background-color: rgba(126, 219, 176, 0.3);
   box-shadow: inset 0px 0px 30px rgba(57, 40, 166, 0.15);
@@ -56,30 +58,34 @@ const BannerSearchBar = styled.div`
   }
 `;
 
-const BannerCardShortcut = styled(Link)`
-  width: 100%;
-  margin: 5px 0 15px 0;
-
-  text-align: left;
-  text-decoration: none;
-  & > span {
-    margin-right: 6px;
-    font-family: 'Spoqa-Bold';
-    color: ${PrimaryColor};
-  }
-`;
-
-const BannerCardBottom = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 7px;
-  & span {
-    font-size: 0.7em;
-  }
-`;
-
 const ContestBanner = () => {
+  const [contestDatas, setContestDatas] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchContestDatas = async () => {
+      try {
+        // 값 초기화
+        setError(null);
+        setLoading(true);
+        setContestDatas(null);
+
+        let contestRes = (await ContestListAPI()).data;
+        // 조회수 높은 순으로 정렬한 뒤 3개 남기고 자르기
+        contestRes.sort((a, b) => b.hitCount - a.hitCount).splice(3);
+        setContestDatas(contestRes);
+      } catch (e) {
+        setError(e);
+        console.log(e);
+      }
+      setLoading(false);
+    };
+    fetchContestDatas();
+  }, []);
+  if (loading) return <Loading />;
+  if (error) return <Error />;
+  if (!contestDatas) return null;
   return (
     <BannerPanel>
       <BannerSearchBar>
@@ -94,54 +100,11 @@ const ContestBanner = () => {
         navigation={true}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <BannerCardShortcut to="/contestdetail">
-            <span>Read More</span>
-            <Arrow />
-          </BannerCardShortcut>
-          <img
-            src="https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/7f607877ec4844b3a4e22afd20c3cfb8.jpg"
-            alt=""
-          />
-          <span>D-10</span>
-          <span>2021 위핏 UX∙마케팅 아이디어 공모전 참여하실 분</span>
-          <BannerCardBottom>
-            <span>작성자 : 김율희</span>
-            <span>조회수 100</span>
-          </BannerCardBottom>
-        </SwiperSlide>
-        <SwiperSlide>
-          <BannerCardShortcut>
-            <span>Read More</span>
-            <Arrow />
-          </BannerCardShortcut>
-          <img
-            src="https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/7f607877ec4844b3a4e22afd20c3cfb8.jpg"
-            alt=""
-          />
-          <span>D-10</span>
-          <span>2021 위핏 UX∙마케팅 아이디어 공모전 참여하실 분</span>
-          <BannerCardBottom>
-            <span>작성자 : 김율희</span>
-            <span>조회수 100</span>
-          </BannerCardBottom>
-        </SwiperSlide>
-        <SwiperSlide>
-          <BannerCardShortcut>
-            <span>Read More</span>
-            <Arrow />
-          </BannerCardShortcut>
-          <img
-            src="https://allforyoung-maycan-seoul.s3.ap-northeast-2.amazonaws.com/uploads/post_photos/2021/05/14/7f607877ec4844b3a4e22afd20c3cfb8.jpg"
-            alt=""
-          />
-          <span>D-10</span>
-          <span>2021 위핏 UX∙마케팅 아이디어 공모전 참여하실 분</span>
-          <BannerCardBottom>
-            <span>작성자 : 김율희</span>
-            <span>조회수 100</span>
-          </BannerCardBottom>
-        </SwiperSlide>
+        {contestDatas.map((data) => (
+          <SwiperSlide>
+            <ContsetBannerCard data={data} key={data._id} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </BannerPanel>
   );

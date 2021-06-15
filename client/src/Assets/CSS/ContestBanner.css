@@ -29,22 +29,30 @@
   border-radius: 20px;
 }
 
-.swiper-slide > span:first-of-type {
+span.dday,
+span.close {
   /* D-Day */
   padding: 5px 10px;
-  margin-bottom: 10px;
 
   font-family: 'Spoqa-Bold';
 
-  background-color: #7edbb0;
   color: white;
   border-radius: 10px;
+}
+
+span.dday {
+  background-color: #7edbb0;
+}
+
+span.close {
+  background-color: #b0b0b0;
 }
 
 .swiper-slide > span:last-of-type {
   /* 제목 */
   font-family: 'Spoqa-Bold';
-  padding-top: 1px;
+  padding-top: 18px;
+  margin-bottom: 3px;
 
   max-width: 300px;
   white-space: nowrap;
