@@ -64,17 +64,11 @@ const ContestCreateInputs = () => {
           <option value="">문학/수기/시나리오</option>
           <option value="">IT/소프트웨어</option>
         </select>
-        <span>응모 대상</span>
-        <input type="text" placeholder="" />
         <span>주최/주관</span>
         <input type="text" placeholder="" />
-        <span>후원/협찬</span>
-        <input type="text" placeholder="" />
-        <span>접수기간</span>
+        <span>마감 기한</span>
         <input type="datetime-local" name="" id="" />
-        <span>~</span>
-        <input type="datetime-local" name="" id="" />
-        <span>지원 규모</span>
+        <span>모집 인원</span>
         <input type="number" placeholder="" />
         <span>홈페이지</span>
         <input type="text" placeholder="" />
