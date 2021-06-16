@@ -3,6 +3,7 @@ import axios from 'axios';
 // 프로젝트 목록 API
 export const ProjectListAPI = () => {
   const projectlist = axios.get('projects/lists');
+  console.log(projectlist);
   return projectlist;
 };
 
