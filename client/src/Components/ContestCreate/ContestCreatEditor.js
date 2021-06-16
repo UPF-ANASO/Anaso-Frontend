@@ -2,9 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
+import { PrimaryColor } from '../../Assets/Color/Color';
+
+const SpanPanel = styled.div`
+  margin: 50px 0 20px 0;
+  & > span {
+    text-align: right;
+    font-family: 'Spoqa-Medium';
+    color: ${PrimaryColor};
+  }
+`;
 
 const QuillPanel = styled.div`
-  margin: 50px 0;
   & > * {
     font-family: 'Spoqa-Light';
   }
@@ -40,6 +49,9 @@ const ContestCreatEditor = () => {
   ];
   return (
     <div>
+      <SpanPanel>
+        <span>상세 내용</span>
+      </SpanPanel>
       <QuillPanel>
         <ReactQuill
           theme="snow"
