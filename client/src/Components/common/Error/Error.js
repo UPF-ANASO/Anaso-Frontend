@@ -19,7 +19,7 @@ const Container = styled.div`
 `;
 
 const DefaultOptions = {
-  loop: true,
+  loop: false,
   autoplay: true,
   animationData: ErrorImg,
   rendererSettings: {
