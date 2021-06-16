@@ -91,12 +91,15 @@ const FileLink = styled.span`
 `;
 
 const ContestDetailTitle = ({ data }) => {
+  const day = data.deadLine.substring(0, 10); // 마감 기한 날짜
+  const time = data.deadLine.substring(11, 16); // 마감 기한 시간
   return (
     <>
       <TitleBox>
         <h1>{data.title}</h1>
         {/* 나중에 링크처리할 부분 */}
         <Writer to="/portfoliodetail">작성자 {data.author}</Writer>
+        {/* user랑 author가 동일한 경우 화면에 표시해야 함 */}
         <Edit to="/contestedit">수정하기</Edit>
       </TitleBox>
       <Details>
@@ -108,10 +111,12 @@ const ContestDetailTitle = ({ data }) => {
           <span>{data.category}</span>
           <span>주최/주관</span>
           <span>{data.organizer}</span>
-          <span>후원/협찬</span>
-          <span>어쩌고</span>
+          <span>모집 인원</span>
+          <span>{data.totalMembers} 명</span>
           <span>마감 기한</span>
-          <span>2021-05-28 3:00 오후</span>
+          <span>
+            {day} {time}
+          </span>
           <span>지원 규모</span>
           <span>500만 원</span>
           <span>홈페이지</span>
