@@ -8,6 +8,6 @@ export const ContestListAPI = () => {
 
 // 공모전 디테일
 export const ContestDetailAPI = (id) => {
-  const contestdetail = axios.get('contests/', id);
+  const contestdetail = axios.get(`http://localhost:3000/contests/${id}`);
   return contestdetail;
 };
