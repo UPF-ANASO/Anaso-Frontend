@@ -4,6 +4,7 @@ import { ProjectListAPI, TestAPI } from '../../Api/Project/Project';
 import { PrimaryColor } from '../../Assets/Color/Color';
 import Loading from '../common/Loading/Loading';
 import Error from '../common/Error/Error';
+import PortfolioCard from './PortfolioCard';
 
 const PortfolioTitle = styled.p`
   font-family: 'Spoqa-Regular';
@@ -15,7 +16,7 @@ const PortfolioInfo = styled.p`
 
 function MyPorfolio() {
   // state 설정
-  const [porfols, setPorfols] = useState(null);
+  const [porfols, setPorfols] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -25,14 +26,11 @@ function MyPorfolio() {
       try {
         // Error, Porfol 빈값으로, Loading true 로 로딩화면 보이게
         setError(null);
-        setPorfols(null);
         setLoading(true);
         // api 로부터 호출된 값 저장
         const result = (await ProjectListAPI()).data;
-        // console.log(a);
         // state에 저장
         setPorfols(result);
-        console.log(result);
       } catch (error) {
         console.log(error);
         setError(error);
@@ -41,7 +39,6 @@ function MyPorfolio() {
     };
     // 함수 fetchUsers 실행
     fetchOutputs();
-    // console.log(porfols);
   }, []);
   // 로딩 시
   if (loading)
@@ -58,10 +55,9 @@ function MyPorfolio() {
       </>
     );
   return (
+    // props 로 data 전달
     <>
-      {porfols.map((porfol) => (
-        <p key={porfols._id}>{porfols.title}</p>
-      ))}
+      <PortfolioCard data={porfols} />
     </>
   );
 }
