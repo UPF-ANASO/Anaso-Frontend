@@ -60,7 +60,6 @@ const BannerSearchBar = styled.div`
 
 const ContestBanner = () => {
   const [contestDatas, setContestDatas] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -68,7 +67,6 @@ const ContestBanner = () => {
       try {
         // 값 초기화
         setError(null);
-        setLoading(true);
         setContestDatas(null);
 
         let contestRes = (await ContestListAPI()).data;
@@ -79,11 +77,9 @@ const ContestBanner = () => {
         setError(e);
         console.log(e);
       }
-      setLoading(false);
     };
     fetchContestDatas();
   }, []);
-  if (loading) return <Loading />;
   if (error) return <Error />;
   if (!contestDatas) return null;
   return (
