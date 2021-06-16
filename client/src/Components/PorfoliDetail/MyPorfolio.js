@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { ProjectListAPI } from '../../Api/Project/Project';
+import { ProjectListAPI, TestAPI } from '../../Api/Project/Project';
 import { PrimaryColor } from '../../Assets/Color/Color';
 import Loading from '../common/Loading/Loading';
 import Error from '../common/Error/Error';
@@ -28,13 +28,14 @@ function MyPorfolio() {
         setPorfols(null);
         setLoading(true);
         // api 로부터 호출된 값 저장
-        const projectlist = await ProjectListAPI();
+        const result = (await ProjectListAPI()).data;
+        // console.log(a);
         // state에 저장
-        setPorfols(projectlist.data);
-        console.log(projectlist.data);
-        console.log({ porfols });
-      } catch (e) {
-        setError(e);
+        setPorfols(result);
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+        setError(error);
       }
       setLoading(false); // 응답이 오면 Loading 종료
     };

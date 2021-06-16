@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // 프로젝트 목록 API
-export const ProjectListAPI = async () => {
-  const projectlist = await axios.get('projects/lists');
+export const ProjectListAPI = () => {
+  const projectlist = axios.get('projects/lists');
   return projectlist;
 };
 
