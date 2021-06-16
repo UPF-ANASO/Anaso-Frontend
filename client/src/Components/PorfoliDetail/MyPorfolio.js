@@ -32,14 +32,15 @@ function MyPorfolio() {
         // state에 저장
         setPorfols(projectlist.data);
         console.log(projectlist.data);
-        console.log(porfols);
+        console.log({ porfols });
       } catch (e) {
         setError(e);
       }
       setLoading(false); // 응답이 오면 Loading 종료
     };
+    // 함수 fetchUsers 실행
     fetchOutputs();
-    console.log(porfols);
+    // console.log(porfols);
   }, []);
   // 로딩 시
   if (loading)
@@ -57,8 +58,9 @@ function MyPorfolio() {
     );
   return (
     <>
-      {/* <p key={porfols._id}>{porfols.title}</p> */}
-      <p>{projectlist.data}</p>
+      {porfols.map((porfol) => (
+        <p key={porfols._id}>{porfols.title}</p>
+      ))}
     </>
   );
 }
