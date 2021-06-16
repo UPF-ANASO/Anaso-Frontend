@@ -105,7 +105,7 @@ const ContestDetailTitle = ({ data }) => {
         </DetailImg>
         <DetailText>
           <span>분야</span>
-          <span>{data.category.toString()}</span>
+          <span>{data.category}</span>
           <span>주최/주관</span>
           <span>{data.organizer}</span>
           <span>후원/협찬</span>
