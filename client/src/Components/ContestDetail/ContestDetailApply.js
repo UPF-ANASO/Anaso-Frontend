@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button from '../common/Button/Button';
-import { PrimaryColor } from '../../Assets/Color/Color';
+import { PrimaryColor, ShadowColor } from '../../Assets/Color/Color';
 
 const ApplyPanel = styled.div`
   margin-bottom: 100px;
@@ -25,11 +25,24 @@ const ApplyBox = styled.div`
   display: grid;
   grid-gap: 20px 0;
   overflow: visible;
+  & span {
+    padding-top: 10px;
+  }
 `;
 
 const PositionBox = styled.div`
   display: grid;
   grid-template-columns: 8fr 4fr 1fr;
+`;
+
+const DisableButton = styled.button`
+  width: 90px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Spoqa-Regular';
+  color: #fff;
+  background-color: #888;
 `;
 
 const testdata = [
@@ -57,7 +70,7 @@ const ContestDetailApply = () => {
             {data.available ? (
               <Button width="90px" text="신청하기" />
             ) : (
-              <Button width="90px" text="신청마감" color="#d25b5b" />
+              <DisableButton width="90px">인원 마감</DisableButton>
             )}
           </PositionBox>
         ))}
