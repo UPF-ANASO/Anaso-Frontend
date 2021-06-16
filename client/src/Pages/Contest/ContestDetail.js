@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ContestDetailTitle from '../../Components/ContestDetail/ContestDetailTitle';
-import ContestDetailContents from '../../Components/ContestDetail/ContestDetailContents';
+import ContestDetailPanel from '../../Components/ContestDetail/ContestDetailPanel';
 import Header from '../../Components/common/Header';
 import Footer from '../../Components/Main/Footer';
 import ContestCategory from '../../Components/common/ContestCategory';
 
-const ContestDetailPanel = styled.div`
+const ContestDetailPage = styled.div`
   margin: 60px 200px;
 `;
 
@@ -16,10 +15,9 @@ const ContestDetail = ({ match, history }) => {
     <div>
       <Header />
       <ContestCategory />
-      <ContestDetailPanel>
-        <ContestDetailTitle match={match} />
-        <ContestDetailContents match={match} history={history} />
-      </ContestDetailPanel>
+      <ContestDetailPage>
+        <ContestDetailPanel match={match} />
+      </ContestDetailPage>
       <Footer />
     </div>
   );
