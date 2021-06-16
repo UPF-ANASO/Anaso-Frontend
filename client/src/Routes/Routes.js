@@ -33,7 +33,7 @@ const Routes = () => {
         <Route path="/apitest" component={ApiTest} />
         {/* Contest */}
         <Route path="/contests" exact component={ContestMain} />
-        <Route path="/contestdetail/:id" component={ContestDetail} />
+        <Route path="/contests/detail/:id" component={ContestDetail} />
         <Route path="/contests/create" component={ContestCreate} />
         <Route path="/contests/edit" component={ContestEdit} />
       </Switch>

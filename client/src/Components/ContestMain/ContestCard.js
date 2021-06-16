@@ -97,7 +97,7 @@ const ContestCard = ({ data }) => {
   const dday = Math.floor(gap / (1000 * 60 * 60 * 24)) * -1;
 
   return (
-    <CardPanel to={`/contestdetail/${data._id}`}>
+    <CardPanel to={`/contests/detail/${data._id}`}>
       <img src={data.poster} alt="" />
       <CardTitle>
         <span>{data.title}</span>
