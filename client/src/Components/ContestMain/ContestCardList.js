@@ -81,7 +81,7 @@ const ContestCardList = () => {
             <option value="">조회 적은순</option>
           </select>
         </FilterDropDowns>
-        <Link to="/contestcreate">
+        <Link to="/contests/create">
           <Button width="80px" text="새 글 쓰기" color={PointColor} />
         </Link>
       </FilterAndButtonPanel>
