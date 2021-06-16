@@ -1,6 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import Test from '../../Assets/Images/test.jpeg';
+import Button from '../common/Button/Button';
+import { Link, useHistory } from 'react-router-dom';
+import { TextColorBlack } from '../../Assets/Color/Color';
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:visited {
+    color: ${TextColorBlack};
+  }
+`;
 
 const MyIntroDiv = styled.div`
   padding: 30px 0;
@@ -14,12 +25,13 @@ const MyIntroDiv = styled.div`
 const MyInfoDiv = styled.div`
   display: flex;
   flex-direction: column;
+  align-content: space-between;
 `;
 
 const ProfileImg = styled.img`
   width: 150px;
   height: 150px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 `;
 
 const Name = styled.p`
@@ -28,6 +40,7 @@ const Name = styled.p`
 `;
 
 const Info = styled.p`
+  margin: 10px 0;
   font-family: 'Spoqa-Light';
 `;
 function MyIntro() {
@@ -37,6 +50,9 @@ function MyIntro() {
       <MyInfoDiv>
         <Name>하유민</Name>
         <Info>안녕하세요. 고양이가 최고라고 생각합니다.</Info>
+        <StyledLink to="/portfolioCreate">
+          <Button width="140px" text="나의 포트폴리오 생성" color="#ffb100" />
+        </StyledLink>
       </MyInfoDiv>
     </MyIntroDiv>
   );
