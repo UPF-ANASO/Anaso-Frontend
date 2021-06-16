@@ -23,6 +23,6 @@ export const ProjectCreateAPI = async (
     role: '팀장',
   });
   //   ProjectCreateAPI();
-  // console.log(api);
+  console.log(date);
   return api;
 };

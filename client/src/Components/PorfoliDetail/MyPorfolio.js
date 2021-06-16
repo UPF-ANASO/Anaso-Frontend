@@ -6,14 +6,6 @@ import Loading from '../common/Loading/Loading';
 import Error from '../common/Error/Error';
 import PortfolioCard from './PortfolioCard';
 
-const PortfolioTitle = styled.p`
-  font-family: 'Spoqa-Regular';
-`;
-
-const PortfolioInfo = styled.p`
-  font-family: 'Spoqa-Light';
-`;
-
 function MyPorfolio() {
   // state 설정
   const [porfols, setPorfols] = useState([]);
