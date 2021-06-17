@@ -1,5 +1,12 @@
 import axios from 'axios';
 
+// userinfo API
+export const UserDetailAPI = (ProfileId) => {
+  const userdetail = axios.get(`/users/detailPortfolio/${ProfileId}`);
+  // console.log(userdetail);
+  return userdetail;
+};
+
 // 한 유저의 프로젝트 목록 API
 export const ProjectListAPI = () => {
   const projectlist = axios.get('projects/lists');

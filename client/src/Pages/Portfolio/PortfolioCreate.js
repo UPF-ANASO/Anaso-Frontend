@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { ProjectCreateAPI } from '../../Api/Project/Project';
 import PortfolioEditor from '../../Components/PortfolioCreate/PortfolioEditor';
+import Header from '../../Components/common/Header';
 
 function PortfolioCreate() {
   // useState 객체 형태로 .
@@ -35,6 +36,7 @@ function PortfolioCreate() {
   };
   return (
     <>
+      <Header />
       <form onSubmit={handlesubmit}>
         <input
           name="title"
@@ -53,7 +55,7 @@ function PortfolioCreate() {
         </p>
         <input type="submit" value="저장" />
       </form>
-      {/* <PortfolioEditor /> */}
+      <PortfolioEditor />
     </>
   );
 }
