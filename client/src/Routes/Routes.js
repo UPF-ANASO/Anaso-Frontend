@@ -27,7 +27,7 @@ const Routes = () => {
         <Route path="/signup" component={Signup} />
         <Route path="/useredit" component={UserEdit} />
         {/* portfolio */}
-        <Route path="/portfoliodetail" exact component={PortfolioDetail} />
+        <Route path="/portfoliodetail/:id" exact component={PortfolioDetail} />
         <Route path="/portfoliolist" component={PortfolioList} />
         <Route path="/portfoliocreate" component={PortfolioCreate} />
         <Route path="/apitest" component={ApiTest} />

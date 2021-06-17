@@ -43,18 +43,22 @@ const Info = styled.p`
   margin: 10px 0;
   font-family: 'Spoqa-Light';
 `;
-function MyIntro() {
+function MyIntro({ match }) {
+  // console.log({ match.params.id });
   return (
-    <MyIntroDiv>
-      <ProfileImg src={Test} />
-      <MyInfoDiv>
-        <Name>하유민</Name>
-        <Info>안녕하세요. 고양이가 최고라고 생각합니다.</Info>
-        <StyledLink to="/portfolioCreate">
-          <Button width="140px" text="나의 포트폴리오 생성" color="#ffb100" />
-        </StyledLink>
-      </MyInfoDiv>
-    </MyIntroDiv>
+    <>
+      <p>{match.params.id}</p>
+      <MyIntroDiv>
+        <ProfileImg src={Test} />
+        <MyInfoDiv>
+          <Name>하유민</Name>
+          <Info>안녕하세요. 고양이가 최고라고 생각합니다.</Info>
+          <StyledLink to="/portfolioCreate">
+            <Button width="140px" text="나의 포트폴리오 생성" color="#ffb100" />
+          </StyledLink>
+        </MyInfoDiv>
+      </MyIntroDiv>
+    </>
   );
 }
 

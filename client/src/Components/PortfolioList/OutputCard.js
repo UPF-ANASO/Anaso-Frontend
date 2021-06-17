@@ -9,6 +9,7 @@ import {
   PrimaryColor2,
 } from '../../Assets/Color/Color';
 import Test from '../../Assets/Images/test.jpeg';
+import PortfolioCard from '../PorfoliDetail/PortfolioCard';
 
 const OutputContent = styled.div`
   display: flex;
@@ -63,16 +64,27 @@ const TextDiv = styled.div`
 function OutputCard({ data }) {
   return (
     <Fade bottom>
-      <OutputContent>
-        <img src={Test} width="140px" height="140px" />
-        <TextDiv>
-          <p>타이틀</p>
-          <p>설명</p>
-          <Link to="/portfoliodetail">
-            <button>자세히 보기</button>
-          </Link>
-        </TextDiv>
-      </OutputContent>
+      <>
+        {data.map((user) => (
+          <OutputContent>
+            <img
+              src={user.ProfileImage}
+              alt="test"
+              width="140px"
+              height="140px"
+            />
+            <TextDiv>
+              <p key={user._id}>{user.name}</p>
+              <p key={user._id}>{user.description}</p>
+              <p key={user._id}>{user.university}</p>
+              <p key={user._id}>{user.major}</p>
+              <Link to={`/portfoliodetail/${user._id}`}>
+                <button>자세히 보기</button>
+              </Link>
+            </TextDiv>
+          </OutputContent>
+        ))}
+      </>
     </Fade>
   );
 }
