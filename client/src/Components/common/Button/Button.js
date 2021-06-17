@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const CustomButton = styled.button`
   width: ${(props) => props.width || '150px'};
-  height: 40px;
+  height: ${(props) => props.height || '40px'};
   border: 2px solid
     ${(props) => (props.color === TextColorWhite ? PrimaryColor : props.color)};
   border-radius: 5px;
@@ -20,9 +20,9 @@ const CustomButton = styled.button`
   }
 `;
 
-const Button = ({ width, color, text, onClick }) => {
+const Button = ({ height, width, color, text, onClick }) => {
   return (
-    <CustomButton width={width} onClick={onClick} color={color}>
+    <CustomButton width={width} onClick={onClick} color={color} height={height}>
       {text}
     </CustomButton>
   );

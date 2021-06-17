@@ -3,18 +3,18 @@ import { useDispatch } from 'react-redux';
 import Background from '../../Assets/Images/background_main.jpeg';
 import styled from 'styled-components';
 import Header from '../../Components/common/Header';
-import ContestCard from '../../Components/Main/ContestCard';
 import BannerContent from '../../Components/Main/BannerContent';
 import Footer from '../../Components/Main/Footer';
 import AnimationSession from '../../Components/Main/AnimationSession';
-import PortfolioList from '../../Components/Main/PortfolioList';
-import Profile from '../../Components/Main/Profile';
+import AfterLoginMain from './AfterLoginMain';
+// import ContestCard from '../../Components/Main/ContestCard';
+// import PortfolioList from '../../Components/Main/PortfolioList';
+// import Profile from '../../Components/Main/Profile';
 import Title from '../../Components/Main/Title';
 import { setCurrentAuthToken } from '../../Redux/actions/auth_action';
 import { ReactComponent as Group } from '../../Assets/Images/group.svg';
 import { ReactComponent as Award } from '../../Assets/Images/winners.svg';
 import { ReactComponent as Portfolio } from '../../Assets/Images/portfolio_website.svg';
-import Flip from 'react-reveal/Flip';
 import Fade from 'react-reveal/Fade';
 import { TextColorWhite } from '../../Assets/Color/Color';
 
@@ -242,26 +242,27 @@ const Main = () => {
           </MainContainer>
         </Fade>
       ) : (
+        <AfterLoginMain />
         // 로그인 후
-        <AfterMainContainer>
-          <TopSession>
-            <PortfolioContainer>
-              <h3>최신 포트폴리오</h3>
-              <PortfolioList />
-            </PortfolioContainer>
-            <ProfileContainer>
-              <Profile />
-            </ProfileContainer>
-          </TopSession>
-          <MiddleSession>
-            <h3>최신 공모전 모집글</h3>
-            <ContestContainer>
-              <ContestCard />
-              <ContestCard />
-              <ContestCard />
-            </ContestContainer>
-          </MiddleSession>
-        </AfterMainContainer>
+        //   <AfterMainContainer>
+        //     <TopSession>
+        //       <PortfolioContainer>
+        //         <h3>최신 포트폴리오</h3>
+        //         <PortfolioList />
+        //       </PortfolioContainer>
+        //       <ProfileContainer>
+        //         <Profile />
+        //       </ProfileContainer>
+        //     </TopSession>
+        //     <MiddleSession>
+        //       <h3>최신 공모전 모집글</h3>
+        //       <ContestContainer>
+        //         <ContestCard />
+        //         <ContestCard />
+        //         <ContestCard />
+        //       </ContestContainer>
+        //     </MiddleSession>
+        //   </AfterMainContainer>
       )}
       <Footer />
     </Container>
