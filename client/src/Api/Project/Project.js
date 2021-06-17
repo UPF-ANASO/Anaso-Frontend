@@ -1,10 +1,17 @@
 import axios from 'axios';
 
-// 프로젝트 목록 API
+// 한 유저의 프로젝트 목록 API
 export const ProjectListAPI = () => {
   const projectlist = axios.get('projects/lists');
   console.log(projectlist);
   return projectlist;
+};
+
+// 전체 유저의 Portfolio 목록 API
+export const UserListAPI = () => {
+  const userList = axios.get('users/getPortfolios');
+  console.log(userList);
+  return userList;
 };
 
 // 프로젝트 생성 API
