@@ -11,3 +11,12 @@ export const ContestDetailAPI = () => {
   const contestdetail = axios.get(location);
   return contestdetail;
 };
+
+// 공모전 참가 신청
+export const contestParticipateAPI = (id) => {
+  const contestparticipate = axios.post(`/contests/participate/${id}`, {
+    positionName: positionName,
+    volunteer: volunteer,
+  });
+  return contestparticipate;
+};
