@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { PrimaryColor } from '../../Assets/Color/Color';
@@ -93,14 +94,21 @@ const FileLink = styled.span`
 const ContestDetailTitle = ({ data }) => {
   const day = data.deadLine.substring(0, 10); // 마감 기한 날짜
   const time = data.deadLine.substring(11, 16); // 마감 기한 시간
+
+  // 유저 이름 정보 불러오기
+  const username = useSelector((state) => state.userInfo.userInfo.name);
   return (
     <>
       <TitleBox>
         <h1>{data.title}</h1>
         {/* 나중에 링크처리할 부분 */}
         <Writer to="/portfoliodetail">작성자 {data.author}</Writer>
-        {/* user랑 author가 동일한 경우 화면에 표시해야 함 */}
-        <Edit to="/contestedit">수정하기</Edit>
+        {/* 작성자와 username이 같다면 수정하기 버튼 보이기 */}
+        {data.author === username ? (
+          <Edit to="/contestedit">수정하기</Edit>
+        ) : (
+          <></>
+        )}
       </TitleBox>
       <Details>
         <DetailImg>

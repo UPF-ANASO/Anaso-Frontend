@@ -55,7 +55,7 @@ const ContestDetailApply = ({ positions }) => {
           <PositionBox key={index}>
             <span>{position.positionName}</span>
             <span>{position.recruitNumbers} 명</span>
-            {position.recruitNumbers == position.confirmedNumbers ? (
+            {position.recruitNumbers === position.confirmedNumbers ? (
               <DisableButton width="90px">인원 마감</DisableButton>
             ) : (
               <Button width="90px" text="신청하기" />
