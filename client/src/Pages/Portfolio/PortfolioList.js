@@ -5,6 +5,7 @@ import Search from '../../Components/PortfolioList/Search';
 import SearchOutput from '../../Components/PortfolioList/SearchOutput';
 import { useState, useEffect } from 'react';
 import { ProjectListAPI } from '../../Api/Project/Project';
+import Fade from 'react-reveal/Fade';
 
 const PortfolioListDiv = styled.div`
   padding: 10px;
