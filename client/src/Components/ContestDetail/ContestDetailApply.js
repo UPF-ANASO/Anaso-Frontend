@@ -45,32 +45,20 @@ const DisableButton = styled.button`
   background-color: #888;
 `;
 
-const testdata = [
-  {
-    id: 1,
-    position: 'Back-End (Spring/Django/Python)',
-    total: 3,
-    available: true,
-  },
-  { id: 2, position: 'PM', total: 1, available: true },
-  { id: 3, position: 'Front-End (ReactJS)', total: 2, available: false },
-];
-
-const ContestDetailApply = () => {
+const ContestDetailApply = ({ positions }) => {
   return (
     <ApplyPanel>
       <h2>포지션 별 신청하기</h2>
       <hr />
       <ApplyBox>
-        {/* 신청 가능 */}
-        {testdata.map((data) => (
-          <PositionBox key={data.id}>
-            <span>{data.position}</span>
-            <span>{data.total} 명</span>
-            {data.available ? (
-              <Button width="90px" text="신청하기" />
-            ) : (
+        {positions.map((position, index) => (
+          <PositionBox key={index}>
+            <span>{position.positionName}</span>
+            <span>{position.recruitNumbers} 명</span>
+            {position.recruitNumbers == position.confirmedNumbers ? (
               <DisableButton width="90px">인원 마감</DisableButton>
+            ) : (
+              <Button width="90px" text="신청하기" />
             )}
           </PositionBox>
         ))}
