@@ -10,6 +10,7 @@ import Header from '../../Components/common/Header';
 import Input from '../../Components/Login/Input';
 import Button from '../../Components/common/Button/Button';
 import { setCurrentAuthToken } from '../../Redux/actions/auth_action';
+import { setCurrentUserInfo } from '../../Redux/actions/userInfo_action';
 
 const Container = styled.div`
   width: 100%;
@@ -57,11 +58,19 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await LoginAPI(ID, PW);
-      console.log(response.data.token);
+      console.log(response.data.userInfo);
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
       }
       dispatch(setCurrentAuthToken(response.data.token)); // Token state 저장
+      const userInfo = {
+        name: response.data.userInfo.name,
+        email: response.data.userInfo.email,
+        phone_number: response.data.userInfo.phoneNumber,
+        major: response.data.userInfo.major,
+        university: response.data.userInfo.university,
+      };
+      dispatch(setCurrentUserInfo(userInfo));
       history.replace('/');
     } catch (err) {
       console.log(err);
