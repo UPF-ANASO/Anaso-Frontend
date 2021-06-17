@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import Background from '../../Assets/Images/background_main.jpeg';
 import styled from 'styled-components';
-import { PrimaryColor, PrimaryColor2 } from '../../Assets/Color/Color';
 import Header from '../../Components/common/Header';
 import ContestCard from '../../Components/Main/ContestCard';
+import BannerContent from '../../Components/Main/BannerContent';
 import Footer from '../../Components/Main/Footer';
-import ImageSession from '../../Components/Main/ImageSession';
+import AnimationSession from '../../Components/Main/AnimationSession';
 import PortfolioList from '../../Components/Main/PortfolioList';
 import Profile from '../../Components/Main/Profile';
 import Title from '../../Components/Main/Title';
 import { setCurrentAuthToken } from '../../Redux/actions/auth_action';
+import { ReactComponent as Group } from '../../Assets/Images/group.svg';
+import { ReactComponent as Award } from '../../Assets/Images/winners.svg';
+import { ReactComponent as Portfolio } from '../../Assets/Images/portfolio_website.svg';
+import Flip from 'react-reveal/Flip';
+import Fade from 'react-reveal/Fade';
+import { TextColorWhite } from '../../Assets/Color/Color';
 
 const Container = styled.div`
   width: 100%;
@@ -20,25 +26,58 @@ const Container = styled.div`
 
 const MainContainer = styled.div`
   margin: 0 auto;
-  width: 90%;
-  height: 100vh;
+  width: ${(props) => props.width || '80%'};
+  min-width: 800px;
+  height: ${(props) => props.heightData || '65vh'};
   display: flex;
   justify-content: center;
+  background-color: ${(props) => props.background || 'white'};
+  &#ContentPart {
+    background: no-repeat top url(${Background});
+    background-size: cover;
+  }
 `;
 
 const TitleSessionContainer = styled.div`
-  flex: 1;
-  flex-basis: 50%;
+  width: 50%;
+  min-width: 460px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 const ImageSessionContainer = styled.div`
-  flex: 1;
-  flex-basis: 50%;
+  width: 50%;
+  min-width: 460px;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const ContentContainer = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const ContentTitle = styled.h3`
+  color: ${TextColorWhite};
+  font-size: 2rem;
+  font-family: 'Spoqa-Regular';
+  letter-spacing: -1px;
+  line-height: 3rem;
+  text-align: center;
+
+  margin-bottom: 2rem;
+`;
+const ContentText = styled.p`
+  color: ${TextColorWhite};
+  font-size: 1rem;
+  font-family: 'Spoqa-Light';
+  line-height: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
 `;
 
 /* ------------ 로그인 후 메인 --------------- */
@@ -46,7 +85,6 @@ const ImageSessionContainer = styled.div`
 const AfterMainContainer = styled.div`
   margin: 0 auto;
   width: 90%;
-  margin-top: 30px;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -131,14 +169,78 @@ const Main = () => {
       <Header />
       {!Token ? (
         // 로그인 전
-        <MainContainer>
-          <TitleSessionContainer>
-            <Title />
-          </TitleSessionContainer>
-          <ImageSessionContainer>
-            <ImageSession />
-          </ImageSessionContainer>
-        </MainContainer>
+        <Fade bottom cascade>
+          <MainContainer heightData={'80vh'}>
+            <TitleSessionContainer>
+              <Title />
+            </TitleSessionContainer>
+            <ImageSessionContainer>
+              <AnimationSession />
+            </ImageSessionContainer>
+          </MainContainer>
+
+          {/* 원하는 팀원 안내 패널*/}
+
+          <MainContainer>
+            <ImageSessionContainer>
+              <Group width={550} />
+            </ImageSessionContainer>
+            <TitleSessionContainer>
+              <BannerContent
+                titleText={'나에게 맞는 사람들'}
+                contentText={
+                  '안나소는 다른 사람의 경험과 활동을 한 눈에 볼 수 있어요.'
+                }
+              />
+            </TitleSessionContainer>
+          </MainContainer>
+
+          {/* 포트폴리오 안내 패널 */}
+
+          <MainContainer>
+            <ImageSessionContainer>
+              <Portfolio width={550} />
+            </ImageSessionContainer>
+            <TitleSessionContainer>
+              <BannerContent
+                titleText={'포트폴리오는 쉽다.'}
+                contentText={
+                  '무겁기만한 포트폴리오, 안나소 템플릿을 통해 쉽게 설계해요.'
+                }
+              />
+            </TitleSessionContainer>
+          </MainContainer>
+
+          {/* 원하는 팀 그룹 */}
+
+          <MainContainer>
+            <ImageSessionContainer>
+              <Award width={550} />
+            </ImageSessionContainer>
+            <TitleSessionContainer>
+              <BannerContent
+                titleText={'성공적인 결과를 이끌다.'}
+                contentText={'안나소는 여러분들의 가능성과 기회를 제공합니다.'}
+              />
+            </TitleSessionContainer>
+          </MainContainer>
+          <MainContainer
+            id="ContentPart"
+            width={'100%'}
+            background_img={Background}
+          >
+            <ContentContainer>
+              <ContentTitle>
+                처음 경험하는 나의 커리어 관리, <br />
+                안나소가 해결해드립니다.
+              </ContentTitle>
+              <ContentText>
+                가장 나를 쉽게 표현하는 플랫폼. <br />
+                안나소와 함께라면 가능합니다.
+              </ContentText>
+            </ContentContainer>
+          </MainContainer>
+        </Fade>
       ) : (
         // 로그인 후
         <AfterMainContainer>

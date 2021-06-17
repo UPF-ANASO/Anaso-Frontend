@@ -16,12 +16,12 @@ export default function (state = initialUserInfoState, action) {
     case SET_USER_INFO:
       return {
         ...state,
-        currentUserInfo: action.payload,
+        userInfo: action.payload,
       };
     case CLEAR_USER_INFO:
       return {
         ...state,
-        currentUserInfo: {
+        userInfo: {
           name: '', // 이름
           email: '', // 이메일
           phone_number: '', // 휴대폰 번호

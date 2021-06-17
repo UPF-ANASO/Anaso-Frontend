@@ -21,8 +21,9 @@ const StyledLink = styled(Link)`
 `;
 
 const TitleText = styled.h2`
-  font-size: 3rem;
-  font-family: 'Spoqa-Light';
+  font-size: 2.6rem;
+  line-height: 60px;
+  font-family: 'Spoqa-Regular';
   word-spacing: 3px;
   strong {
     color: ${PrimaryColor};

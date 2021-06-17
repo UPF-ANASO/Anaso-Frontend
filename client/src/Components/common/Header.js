@@ -74,16 +74,22 @@ const StyledLink = styled(Link)`
 function Header() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const token = useSelector((state) => {
-    state.auth.currentToken;
-  }, shallowEqual);
+  const [Token, setToken] = useState('');
+
   const handleLogout = (e) => {
     // 토큰/유저정보/로컬스토리지 토큰 삭제
     localStorage.removeItem('token');
     dispatch(clearToken());
     dispatch(clearUserInfo());
-    history.replace('/');
+    location.reload();
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setToken(token);
+    }
+  }, []);
 
   return (
     <HeaderDiv>
@@ -102,7 +108,7 @@ function Header() {
         <Subtitle>스터디</Subtitle>
       </StyledLink>
       <UserDiv>
-        {!token ? (
+        {!Token ? (
           <>
             <StyledLink to="/login">
               <Subtitle>로그인</Subtitle>
