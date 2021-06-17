@@ -118,9 +118,11 @@ const ContestDetailTitle = ({ data }) => {
             {day} {time}
           </span>
           <span>지원 규모</span>
-          <span>500만 원</span>
+          <span>{data.supportScale}</span>
           <span>홈페이지</span>
-          <span>https://www.naver.com/</span>
+          <a href={data.homepage} target="_blank">
+            {data.homepage}
+          </a>
         </DetailText>
       </Details>
     </>
