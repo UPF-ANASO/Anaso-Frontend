@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button from '../common/Button/Button';
-import { PrimaryColor, ShadowColor } from '../../Assets/Color/Color';
+import { PrimaryColor } from '../../Assets/Color/Color';
+
+import { contestParticipateAPI } from '../../Api/Contest/Contest';
 
 const ApplyPanel = styled.div`
   margin-bottom: 100px;
@@ -46,6 +48,10 @@ const DisableButton = styled.button`
 `;
 
 const ContestDetailApply = ({ positions }) => {
+  // useSelector로 username 가져와서 넣고 + positionName
+  // const response = await contestParticipateAPI()
+  // 버튼 onClick했을때 조회해서 붙여야함
+
   return (
     <ApplyPanel>
       <h2>포지션 별 신청하기</h2>
