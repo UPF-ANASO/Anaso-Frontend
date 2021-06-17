@@ -11,7 +11,7 @@ function MyPorfolio() {
   const [porfols, setPorfols] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  // const { userid } = match.params;
   useEffect(() => {
     // 컴포넌트가 화면에 나타날 때 실행할 함수
     const fetchOutputs = async () => {

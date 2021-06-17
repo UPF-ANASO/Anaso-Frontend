@@ -42,8 +42,8 @@ function SearchOutput() {
         setLoading(true);
 
         const result = (await UserListAPI()).data;
-        console.log(result);
-        setUsers(result);
+        console.log(result.portfolios);
+        setUsers(result.portfolios);
       } catch (error) {
         setError(error);
       }

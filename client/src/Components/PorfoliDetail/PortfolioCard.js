@@ -44,6 +44,7 @@ const PortfolioCardDiv = styled.div`
   }
 `;
 function PortfolioCard({ data }) {
+  console.log({ data });
   return (
     <PortfolioCardDiv>
       {data.map((pofol) => (
