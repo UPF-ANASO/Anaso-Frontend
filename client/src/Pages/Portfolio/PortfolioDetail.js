@@ -37,13 +37,13 @@ function PortfolioDetail({ match }) {
   // const { userId } = match.params.key;
   return (
     <>
-      <p>{match.params.id}</p>
+      {/* <p>{match.params.id}</p> */}
       {/* <pre>{JSON.stringify(match, null, 2)}</pre> */}
       <Header />
       <PortfolioDetailDiv>
         <MyIntro match={match} />
         <SmallTitle>포트폴리오</SmallTitle>
-        <MyPorfolio />
+        {/* <MyPorfolio /> */}
         <SmallTitle>참여 중인 공모전</SmallTitle>
       </PortfolioDetailDiv>
     </>
