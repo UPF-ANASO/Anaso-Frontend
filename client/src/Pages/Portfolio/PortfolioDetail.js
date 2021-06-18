@@ -43,7 +43,7 @@ function PortfolioDetail({ match }) {
       <PortfolioDetailDiv>
         <MyIntro match={match} />
         <SmallTitle>포트폴리오</SmallTitle>
-        {/* <MyPorfolio /> */}
+        <MyPorfolio match={match} />
         <SmallTitle>참여 중인 공모전</SmallTitle>
       </PortfolioDetailDiv>
     </>

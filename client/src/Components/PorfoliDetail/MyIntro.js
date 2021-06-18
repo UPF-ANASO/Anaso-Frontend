@@ -89,7 +89,7 @@ function MyIntro({ match }) {
             <span>{profile.major}</span>
           </p>
           <Info>{profile.description}</Info>
-          <StyledLink to="/portfolioCreate">
+          <StyledLink match={match} to="/portfolioCreate">
             <Button width="140px" text="나의 포트폴리오 생성" color="#ffb100" />
           </StyledLink>
         </MyInfoDiv>

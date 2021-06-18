@@ -3,8 +3,15 @@ import { useState, useEffect } from 'react';
 import { ProjectCreateAPI } from '../../Api/Project/Project';
 import PortfolioEditor from '../../Components/PortfolioCreate/PortfolioEditor';
 import Header from '../../Components/common/Header';
+import { useSelector } from 'react-redux';
 
 function PortfolioCreate() {
+  const userId = useSelector((state) => state.userInfo.userInfo.userID);
+  const token = useSelector((state) => state.auth.currentToken);
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  // console.log(config);
   // useState 객체 형태로 .
   const [content, setContent] = useState({
     // 초기값 설정
@@ -23,7 +30,7 @@ function PortfolioCreate() {
       // 새롭게 바뀐 value 값으로 추가
       [name]: value,
     });
-    console.log({ title });
+    // console.log({ title });
     // console.log({ date });
   };
 
@@ -31,12 +38,15 @@ function PortfolioCreate() {
     e.preventDefault();
     // title = e.target.title.value;
     // date = e.target.date.value;
-    console.log({ title });
-    ProjectCreateAPI(title);
+    // console.log({ title });
+    ProjectCreateAPI(title, config, userId);
+    // console.log(a);
   };
+  // console.log({ a });
   return (
     <>
       <Header />
+      {/* <p>{a}</p> */}
       <form onSubmit={handlesubmit}>
         <input
           name="title"
@@ -44,15 +54,6 @@ function PortfolioCreate() {
           value={title}
           onChange={handleChange}
         />
-        <p>
-          <span>작성자: </span>
-          <span>밈</span>
-        </p>
-        <p>이미지라고 치는 문구</p>
-        <p>
-          <span>역할:</span>
-          <span>팀장</span>
-        </p>
         <input type="submit" value="저장" />
       </form>
       <PortfolioEditor />
