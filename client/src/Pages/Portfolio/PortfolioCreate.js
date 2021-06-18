@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { ProjectCreateAPI } from '../../Api/Project/Project';
-import PortfolioEditor from '../../Components/PortfolioCreate/PortfolioEditor';
+// import PortfolioEditor from '../../Components/PortfolioCreate/PortfolioEditor';
 import Header from '../../Components/common/Header';
 import { useSelector } from 'react-redux';
 
@@ -17,11 +17,12 @@ function PortfolioCreate() {
   const [content, setContent] = useState({
     // 초기값 설정
     title: '',
+    thumbnail: null,
   });
   // 구조분해할당.
   // title, date 에 각각 초기값이 먼저 들어감.
   // 값이 바뀌면 구조분해할당으로 title 값에 text 값이, date 값에 date 값이 들어간다.
-  const { title } = content;
+  const { title, thumbnail } = content;
   // input 에 값이 입력될 때마다 함수 실행
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -32,19 +33,21 @@ function PortfolioCreate() {
       [name]: value,
     });
     // console.log({ title });
-    // console.log({ date });
+    // console.log({ role });
+    // console.log({ thumbnail });
   };
 
   const handlesubmit = (e) => {
     e.preventDefault();
     // title = e.target.title.value;
-    // date = e.target.date.value;
-    ProjectCreateAPI(title, config, userId);
+    // role = e.target.role.value;
+    // console.log(role);
+    console.log(title);
+    ProjectCreateAPI(title, config, userId, thumbnail);
   };
   return (
     <>
       <Header />
-      {/* <p>{a}</p> */}
       <form onSubmit={handlesubmit}>
         <input
           name="title"
@@ -52,9 +55,15 @@ function PortfolioCreate() {
           value={title}
           onChange={handleChange}
         />
+        <input
+          name="thumbnail"
+          type="file"
+          value={thumbnail}
+          onChange={handleChange}
+        />
         <input type="submit" value="저장" />
       </form>
-      <PortfolioEditor />
+      {/* <PortfolioEditor /> */}
     </>
   );
 }
