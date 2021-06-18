@@ -14,6 +14,13 @@ export const UserProjectAPI = (userId) => {
   return userproject;
 };
 
+// 한 유저의 프로젝트 디테일 조회 API
+export const UserProjectDetailAPI = (userId) => {
+  const userprojectdetail = axios.get(`/projects/`);
+  console.log(userprojectdetail);
+  return userprojectdetail;
+};
+
 // 전체 유저의 Portfolio 목록 API
 export const UserListAPI = () => {
   const userList = axios.get('users/getPortfolios');

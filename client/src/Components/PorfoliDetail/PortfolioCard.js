@@ -1,10 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
+  TextColorBlack,
   PrimaryColor,
   ShadowColor,
   PrimaryColor2,
 } from '../../Assets/Color/Color';
+import { Link } from 'react-router-dom';
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:visited {
+    color: ${TextColorBlack};
+  }
+`;
+
 const CardDiv = styled.div`
   width: 300px;
   height: 150px;
@@ -48,10 +59,12 @@ function PortfolioCard({ data }) {
   return (
     <PortfolioCardDiv>
       {data.map((pofol) => (
-        <CardDiv>
-          <Title key={pofol._id}>{pofol.title}</Title>
-          {/* <p key={pofol.id}>{pofol.role}</p> */}
-        </CardDiv>
+        <StyledLink to="/myportfoliodetail">
+          <CardDiv>
+            <Title key={pofol._id}>{pofol.title}</Title>
+            {/* <p key={pofol.id}>{pofol.role}</p> */}
+          </CardDiv>
+        </StyledLink>
       ))}
     </PortfolioCardDiv>
   );
