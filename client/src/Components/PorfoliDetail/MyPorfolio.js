@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { ProjectListAPI, TestAPI } from '../../Api/Project/Project';
+import { UserProjectAPI } from '../../Api/Project/Project';
 import { PrimaryColor } from '../../Assets/Color/Color';
 import Loading from '../common/Loading/Loading';
 import Error from '../common/Error/Error';
 import PortfolioCard from './PortfolioCard';
 
-function MyPorfolio() {
+function MyPorfolio({ match }) {
+  const userId = match.params.id;
   // state 설정
   const [porfols, setPorfols] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ function MyPorfolio() {
         setError(null);
         setLoading(true);
         // api 로부터 호출된 값 저장
-        const result = (await ProjectListAPI()).data;
+        const result = (await UserProjectAPI(userId)).data;
         // state에 저장
         setPorfols(result);
       } catch (error) {

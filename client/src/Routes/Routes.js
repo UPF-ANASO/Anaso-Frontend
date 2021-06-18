@@ -8,7 +8,7 @@ import UserEdit from '../Pages/User/UserEdit';
 
 import PortfolioDetail from '../Pages/Portfolio/PortfolioDetail';
 import PortfolioList from '../Pages/Portfolio/PortfolioList';
-import ApiTest from '../Pages/Portfolio/ApiTest';
+// import ApiTest from '../Pages/Portfolio/ApiTest';
 
 import ContestMain from '../Pages/Contest/ContestMain';
 import ContestDetail from '../Pages/Contest/ContestDetail';
@@ -30,7 +30,7 @@ const Routes = () => {
         <Route path="/portfoliodetail/:id" exact component={PortfolioDetail} />
         <Route path="/portfoliolist" component={PortfolioList} />
         <Route path="/portfoliocreate" component={PortfolioCreate} />
-        <Route path="/apitest" component={ApiTest} />
+        {/* <Route path="/apitest" component={ApiTest} /> */}
         {/* Contest */}
         <Route path="/contests" exact component={ContestMain} />
         <Route path="/contests/detail/:id" component={ContestDetail} />

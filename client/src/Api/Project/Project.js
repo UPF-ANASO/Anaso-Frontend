@@ -8,10 +8,10 @@ export const UserDetailAPI = (ProfileId) => {
 };
 
 // 한 유저의 프로젝트 목록 API
-export const ProjectListAPI = () => {
-  const projectlist = axios.get('projects/lists');
-  console.log(projectlist);
-  return projectlist;
+export const UserProjectAPI = (userId) => {
+  const userproject = axios.get(`/projects/${userId}`);
+  console.log(userproject);
+  return userproject;
 };
 
 // 전체 유저의 Portfolio 목록 API
@@ -22,21 +22,21 @@ export const UserListAPI = () => {
 };
 
 // 프로젝트 생성 API
-export const ProjectCreateAPI = async (
-  title,
-  participant,
-  date,
-  thumbnail,
-  role,
-) => {
-  const api = axios.post('projects/create', {
-    title: title,
-    participant: '밈미, 옹이',
-    endDate: date,
-    thumbnail: '이미지 들어갑니다',
-    role: '팀장',
-  });
+export const ProjectCreateAPI = async (title, config, userId) => {
+  console.log(config);
+  const api = axios.post(
+    'projects/create',
+    {
+      title: title,
+      participant: '밈미, 옹이',
+      thumbnail: '이미지 들어갑니다',
+      role: '팀장',
+      user_id: userId,
+    },
+    // header 추가
+    config,
+  );
   //   ProjectCreateAPI();
-  console.log(date);
+  console.log(api);
   return api;
 };

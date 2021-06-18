@@ -50,7 +50,7 @@ function PortfolioCard({ data }) {
       {data.map((pofol) => (
         <CardDiv>
           <Title key={pofol._id}>{pofol.title}</Title>
-          <p key={pofol.id}>{pofol.role}</p>
+          {/* <p key={pofol.id}>{pofol.role}</p> */}
         </CardDiv>
       ))}
     </PortfolioCardDiv>
