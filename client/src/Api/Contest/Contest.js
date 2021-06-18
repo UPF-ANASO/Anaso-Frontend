@@ -7,8 +7,8 @@ export const ContestListAPI = () => {
 };
 
 // 공모전 디테일
-export const ContestDetailAPI = () => {
-  const contestdetail = axios.get(location);
+export const ContestDetailAPI = (id) => {
+  const contestdetail = axios.get(`/contests/detail/${id}`);
   return contestdetail;
 };
 
