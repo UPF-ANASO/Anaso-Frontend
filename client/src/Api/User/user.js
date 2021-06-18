@@ -6,9 +6,9 @@ export const UploadImgAPI = (fd) => {
   return response;
 };
 
-// 이미지 경로까지 저장해야함. form-data 이용
-export const SignUpAPI = (fd) => {
-  const response = axios.post('/users/signup', fd);
+// 유저 회원가입
+export const SignUpAPI = (userInfo) => {
+  const response = axios.post('/users/signup', userInfo);
   return response;
 };
 

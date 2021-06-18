@@ -58,7 +58,6 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await LoginAPI(ID, PW);
-      console.log(response.data.userInfo);
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
       }
@@ -71,6 +70,7 @@ const Login = () => {
         major: response.data.userInfo.major,
         university: response.data.userInfo.university,
       };
+      localStorage.setItem('userInfo', userInfo);
       dispatch(setCurrentUserInfo(userInfo));
       history.replace('/');
     } catch (err) {
