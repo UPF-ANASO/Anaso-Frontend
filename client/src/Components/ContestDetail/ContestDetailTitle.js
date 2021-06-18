@@ -42,6 +42,18 @@ const Edit = styled(Link)`
   }
 `;
 
+const Delete = styled(Link)`
+  margin-left: 10px;
+  font-family: 'Spoqa-Light';
+  text-decoration: none;
+  color: black;
+
+  transition: all 0.3s;
+  &:hover {
+    color: #da4b4b;
+  }
+`;
+
 const Details = styled.div`
   display: flex;
   flex-direction: row;
@@ -79,18 +91,6 @@ const DetailText = styled.div`
   }
 `;
 
-const FileLink = styled.span`
-  & a {
-    text-decoration: none;
-    color: black;
-    transition: all 0.3s;
-  }
-  & a:hover {
-    text-decoration: underline;
-    color: #ccc;
-  }
-`;
-
 const ContestDetailTitle = ({ data }) => {
   const day = data.deadLine.substring(0, 10); // 마감 기한 날짜
   const time = data.deadLine.substring(11, 16); // 마감 기한 시간
@@ -105,7 +105,10 @@ const ContestDetailTitle = ({ data }) => {
         <Writer to="/portfoliodetail">작성자 {data.author}</Writer>
         {/* 작성자와 username이 같다면 수정하기 버튼 보이기 */}
         {data.author === username ? (
-          <Edit to="/contestedit">수정하기</Edit>
+          <>
+            <Edit to="/contestedit">수정</Edit>
+            <Delete>삭제</Delete>
+          </>
         ) : (
           <></>
         )}
