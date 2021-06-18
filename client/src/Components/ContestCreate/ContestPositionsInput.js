@@ -1,6 +1,10 @@
 import React, { useState, useRef, useCallback } from 'react';
 import styled from 'styled-components';
-import { PrimaryColor, PointColor } from '../../Assets/Color/Color';
+import {
+  PrimaryColor,
+  PrimaryColor2,
+  ShadowColor,
+} from '../../Assets/Color/Color';
 
 import Button from '../common/Button/Button';
 import ContestPosition from './ContestPosition';
@@ -36,24 +40,41 @@ const PositionsBox = styled.div`
   border: 1px solid #ededed;
 
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 15px;
+    height: 50px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: white;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${ShadowColor};
+    border-radius: 15px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    transition: 1s;
+    background-color: ${PrimaryColor2};
+    border-radius: 15px;
+  }
 `;
 
-const ContestPositionsInput = () => {
-  const [positions, setPositions] = useState([{ id: 1 }]);
+const ContestPositionsInput = ({ onChangeField, positions }) => {
+  const [positionsData, setpositionsData] = useState([{ id: 1 }]);
 
   const nextId = useRef(2);
 
   const onInsert = useCallback(() => {
     const position = { id: nextId.current };
-    setPositions(positions.concat(position));
+    setpositionsData(positionsData.concat(position));
     nextId.current += 1;
-  }, [positions]);
+  }, [positionsData]);
 
   const onRemove = useCallback(
     (id) => {
-      setPositions(positions.filter((position) => position.id !== id));
+      setpositionsData(positionsData.filter((position) => position.id !== id));
     },
-    [positions],
+    [positionsData],
   );
 
   return (
@@ -63,7 +84,7 @@ const ContestPositionsInput = () => {
         <Button onClick={onInsert} width="145px" text="새로운 포지션 추가" />
       </TextandButtonPanel>
       <PositionsBox>
-        {positions.map((position) => (
+        {positionsData.map((position) => (
           <ContestPosition
             key={position.id}
             onRemove={onRemove}

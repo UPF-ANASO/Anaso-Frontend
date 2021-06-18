@@ -37,7 +37,7 @@ const PositionBox = styled.div`
   }
 `;
 
-const ContestPosition = ({ onRemove, id }) => {
+const ContestPosition = ({ onRemove, id, positions, onChangePositions }) => {
   return (
     <PositionBox>
       <span>포지션</span>
