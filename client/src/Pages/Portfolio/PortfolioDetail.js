@@ -45,6 +45,7 @@ function PortfolioDetail({ match }) {
         <SmallTitle>포트폴리오</SmallTitle>
         <MyPorfolio match={match} />
         <SmallTitle>참여 중인 공모전</SmallTitle>
+        <MyContest match={match} />
       </PortfolioDetailDiv>
     </>
   );
