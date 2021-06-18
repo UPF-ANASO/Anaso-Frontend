@@ -4,8 +4,45 @@ import { ProjectCreateAPI } from '../../Api/Project/Project';
 // import PortfolioEditor from '../../Components/PortfolioCreate/PortfolioEditor';
 import Header from '../../Components/common/Header';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+import Button from '../../Components/common/Button/Button';
+import { PrimaryColor, PointColor } from '../../Assets/Color/Color';
+import { Link, useHistory } from 'react-router-dom';
+
+const Formdiv = styled.div`
+  width: 50%;
+  /* border: 1px solid black; */
+  margin: 0 auto;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  & > textarea {
+    font-family: 'Spoqa-Light';
+    font-size: 1.1rem;
+    border: none;
+    :focus {
+      outline: none;
+    }
+  }
+  & > button {
+    margin-top: 30px;
+  }
+`;
+
+const Input = styled.input`
+  font-family: 'Spoqa-Light';
+  font-size: 1.2rem;
+  display: block;
+  border: none;
+  /* border-bottom: 1px solid ${PrimaryColor}; */
+  &:focus {
+    outline: none;
+  }
+`;
 
 function PortfolioCreate() {
+  const history = useHistory();
   // redux 에서 userid, currentToken 받아오기
   const userId = useSelector((state) => state.userInfo.userInfo.userID);
   const token = useSelector((state) => state.auth.currentToken);
@@ -62,36 +99,44 @@ function PortfolioCreate() {
     // title = e.target.title.value;
     // role = e.target.role.value;
     ProjectCreateAPI(formdata, config);
+    window.location.replace(`/portfoliodetail/${userId}`);
   };
+
   return (
     <>
       <Header />
       <form onSubmit={handlesubmit}>
-        <input
-          name="title"
-          placeholder="제목을 입력하세요."
-          value={title}
-          onChange={handleChange}
-        />
-        <input
-          name="explanation"
-          placeholder="설명을 입력하세요."
-          value={explanation}
-          onChange={handleChange}
-        />
-        <input
-          name="role"
-          placeholder="역할을 입력하세요."
-          value={role}
-          onChange={handleChange}
-        />
-        <input
-          // name="thumbnail"
-          type="file"
-          // value={thumbnail}
-          onChange={handleChangeFile}
-        />
-        <input type="submit" value="저장" />
+        <Formdiv>
+          <Input
+            name="title"
+            placeholder="제목을 입력하세요."
+            value={title}
+            onChange={handleChange}
+          />
+          <Input
+            name="role"
+            placeholder="역할을 입력하세요."
+            value={role}
+            onChange={handleChange}
+          />
+          <textarea
+            name="explanation"
+            placeholder="설명을 입력하세요."
+            value={explanation}
+            onChange={handleChange}
+            cols="80"
+            rows="5"
+          />
+          <Input
+            // name="thumbnail"
+            type="file"
+            // value={thumbnail}
+            onChange={handleChangeFile}
+          />
+          {/* <Link to={`/portfoliodetail/${userId}`}> */}
+          <Button text="프로젝트 생성" width="800px" height="50px" />
+          {/* </Link> */}
+        </Formdiv>
       </form>
       {/* <PortfolioEditor /> */}
     </>
