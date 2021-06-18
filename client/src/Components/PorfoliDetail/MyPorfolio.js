@@ -50,7 +50,13 @@ function MyPorfolio({ match }) {
   return (
     // props 로 data 전달
     <>
-      <PortfolioCard data={porfols} />
+      {porfols === [] ? (
+        <p>없음</p>
+      ) : (
+        <>
+          <PortfolioCard data={porfols} />
+        </>
+      )}
     </>
   );
 }

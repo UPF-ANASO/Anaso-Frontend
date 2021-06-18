@@ -57,16 +57,24 @@ const PortfolioCardDiv = styled.div`
 function PortfolioCard({ data }) {
   console.log({ data });
   return (
-    <PortfolioCardDiv>
-      {data.map((pofol) => (
-        <StyledLink to="/myportfoliodetail">
-          <CardDiv>
-            <Title key={pofol._id}>{pofol.title}</Title>
-            {/* <p key={pofol.id}>{pofol.role}</p> */}
-          </CardDiv>
-        </StyledLink>
-      ))}
-    </PortfolioCardDiv>
+    <>
+      {data === [] ? (
+        <p>없음</p>
+      ) : (
+        <>
+          <PortfolioCardDiv>
+            {data.map((pofol) => (
+              <StyledLink to={`/myportfoliodetail/${pofol._id}`}>
+                <CardDiv>
+                  <Title key={pofol._id}>{pofol.title}</Title>
+                  {/* <p key={pofol.id}>{pofol.role}</p> */}
+                </CardDiv>
+              </StyledLink>
+            ))}
+          </PortfolioCardDiv>
+        </>
+      )}
+    </>
   );
 }
 

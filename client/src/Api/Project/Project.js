@@ -14,9 +14,16 @@ export const UserProjectAPI = (userId) => {
   return userproject;
 };
 
+// 프로젝트 삭제 API
+export const UserProjectDeleteAPI = (carddetail, config) => {
+  const res = axios.delete(`/projects/delete/${carddetail}`, config);
+  console.log(res);
+  return res;
+};
+
 // 한 유저의 프로젝트 디테일 조회 API
-export const UserProjectDetailAPI = (userId) => {
-  const userprojectdetail = axios.get(`/projects/`);
+export const UserProjectDetailAPI = (carddetail) => {
+  const userprojectdetail = axios.get(`/projects/lists/${carddetail}`);
   console.log(userprojectdetail);
   return userprojectdetail;
 };
@@ -29,15 +36,15 @@ export const UserListAPI = () => {
 };
 
 // 프로젝트 생성 API
-export const ProjectCreateAPI = async (title, config, userId) => {
+export const ProjectCreateAPI = async (title, config, userId, thumbnail) => {
   console.log(config);
   const api = axios.post(
     'projects/create',
     {
       title: title,
       participant: '밈미, 옹이',
-      thumbnail: '이미지 들어갑니다',
-      role: '팀장',
+      thumbnail: thumbnail,
+      role: '대장',
       user_id: userId,
     },
     // header 추가

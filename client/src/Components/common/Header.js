@@ -47,7 +47,7 @@ const Subtitle = styled.p`
   display: inline-block;
   text-align: center;
   font-family: 'Spoqa-Regular';
-  font-size: 1.2rem;
+  font-size: 1 rem;
   width: 100px;
   :hover {
     transition: 0.15s;

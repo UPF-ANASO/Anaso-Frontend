@@ -64,27 +64,31 @@ const TextDiv = styled.div`
 function OutputCard({ data }) {
   return (
     <Fade bottom>
-      <>
-        {data.map((user) => (
-          <OutputContent>
-            <img
-              src={user.ProfileImage}
-              alt="test"
-              width="140px"
-              height="140px"
-            />
-            <TextDiv>
-              <p key={user._id}>{user.name}</p>
-              <p key={user._id}>{user.description}</p>
-              <p key={user._id}>{user.university}</p>
-              <p key={user._id}>{user.major}</p>
-              <Link to={`/portfoliodetail/${user._id}`}>
-                <button>자세히 보기</button>
-              </Link>
-            </TextDiv>
-          </OutputContent>
-        ))}
-      </>
+      {data === [] ? (
+        <p>데이터가 없습니다.</p>
+      ) : (
+        <>
+          {data.map((user) => (
+            <OutputContent>
+              <img
+                src={user.profileImage}
+                alt="test"
+                width="140px"
+                height="140px"
+              />
+              <TextDiv>
+                <p key={user._id}>{user.name}</p>
+                <p key={user._id}>{user.description}</p>
+                <p key={user._id}>{user.university}</p>
+                <p key={user._id}>{user.major}</p>
+                <Link to={`/portfoliodetail/${user._id}`}>
+                  <button>자세히 보기</button>
+                </Link>
+              </TextDiv>
+            </OutputContent>
+          ))}
+        </>
+      )}
     </Fade>
   );
 }
