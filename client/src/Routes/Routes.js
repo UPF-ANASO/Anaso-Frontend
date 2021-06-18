@@ -15,6 +15,7 @@ import ContestDetail from '../Pages/Contest/ContestDetail';
 import ContestCreate from '../Pages/Contest/ContestCreate';
 import ContestEdit from '../Pages/Contest/ContestEdit';
 import PortfolioCreate from '../Pages/Portfolio/PortfolioCreate';
+import MyPortfolioDetail from '../Components/PorfoliDetail/MyPortfolioDetail';
 
 const Routes = () => {
   return (
@@ -30,6 +31,7 @@ const Routes = () => {
         <Route path="/portfoliodetail/:id" exact component={PortfolioDetail} />
         <Route path="/portfoliolist" component={PortfolioList} />
         <Route path="/portfoliocreate" component={PortfolioCreate} />
+        <Route path="/myportfoliodetail" component={MyPortfolioDetail} />
         {/* <Route path="/apitest" component={ApiTest} /> */}
         {/* Contest */}
         <Route path="/contests" exact component={ContestMain} />

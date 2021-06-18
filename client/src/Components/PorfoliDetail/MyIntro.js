@@ -7,6 +7,7 @@ import { TextColorBlack } from '../../Assets/Color/Color';
 import { UserDetailAPI } from '../../Api/Project/Project';
 import Loading from '../common/Loading/Loading';
 import Error from '../common/Error/Error';
+import { useSelector } from 'react-redux';
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -48,6 +49,7 @@ const Info = styled.p`
   font-family: 'Spoqa-Light';
 `;
 function MyIntro({ match }) {
+  const userId = useSelector((state) => state.userInfo.userInfo.userID);
   const ProfileId = match.params.id;
   // const result = async () => {
   //   const a = (await UserDetailAPI(ProfileId)).data;
@@ -90,7 +92,17 @@ function MyIntro({ match }) {
           </p>
           <Info>{profile.description}</Info>
           <StyledLink match={match} to="/portfolioCreate">
-            <Button width="140px" text="나의 포트폴리오 생성" color="#ffb100" />
+            <>
+              {ProfileId === userId ? (
+                <Button
+                  width="140px"
+                  text="나의 포트폴리오 생성"
+                  color="#ffb100"
+                />
+              ) : (
+                <></>
+              )}
+            </>
           </StyledLink>
         </MyInfoDiv>
       </MyIntroDiv>

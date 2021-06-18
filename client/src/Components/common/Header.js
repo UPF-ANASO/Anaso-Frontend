@@ -20,6 +20,7 @@ import {
   setCurrentUserInfo,
 } from '../../Redux/actions/userInfo_action';
 
+import Test from '../../Assets/Images/test.jpeg';
 const HeaderDiv = styled.div`
   top: 0;
   z-index: 99;
@@ -55,6 +56,30 @@ const Subtitle = styled.p`
   }
 `;
 
+// 프로필 사진 관련 코드
+const ProfileDiv = styled.div`
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Img = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* float: right; */
+  display: inline-block;
+  & > div:nth-child(1) {
+    width: 100px;
+  }
+`;
+
+const Name = styled.p`
+  text-align: center;
+  min-width: 100px;
+`;
+
 const UserDiv = styled.div`
   /* width: 20%; */
 `;
@@ -75,6 +100,8 @@ function Header() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [Token, setToken] = useState('');
+  // 리덕스에서 username 가져오기
+  const username = useSelector((state) => state.userInfo.userInfo.name);
 
   const handleLogout = (e) => {
     // 토큰/유저정보/로컬스토리지 토큰 삭제
@@ -119,9 +146,14 @@ function Header() {
           </>
         ) : (
           <>
-            <StyledLink onClick={handleLogout}>
-              <Subtitle>로그아웃</Subtitle>
-            </StyledLink>
+            <ProfileDiv>
+              <StyledLink onClick={handleLogout}>
+                <Subtitle>로그아웃</Subtitle>
+              </StyledLink>
+              {/* 현재 로그인된 유저의 Name 과 Image 출력  */}
+              <Name>{username}</Name>
+              <Img src={Test} alt="image"></Img>
+            </ProfileDiv>
           </>
         )}
       </UserDiv>

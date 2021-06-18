@@ -6,12 +6,13 @@ import Header from '../../Components/common/Header';
 import { useSelector } from 'react-redux';
 
 function PortfolioCreate() {
+  // redux 에서 userid, currentToken 받아오기
   const userId = useSelector((state) => state.userInfo.userInfo.userID);
   const token = useSelector((state) => state.auth.currentToken);
+  // 헤더 부분 정의
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  // console.log(config);
   // useState 객체 형태로 .
   const [content, setContent] = useState({
     // 초기값 설정
@@ -38,11 +39,8 @@ function PortfolioCreate() {
     e.preventDefault();
     // title = e.target.title.value;
     // date = e.target.date.value;
-    // console.log({ title });
     ProjectCreateAPI(title, config, userId);
-    // console.log(a);
   };
-  // console.log({ a });
   return (
     <>
       <Header />
