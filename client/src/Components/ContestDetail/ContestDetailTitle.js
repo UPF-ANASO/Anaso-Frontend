@@ -118,6 +118,8 @@ const ContestDetailTitle = ({ data }) => {
           <img src={data.poster} alt="" />
         </DetailImg>
         <DetailText>
+          <span>공모전 이름</span>
+          <span>{data.contestName}</span>
           <span>분야</span>
           <span>{data.category}</span>
           <span>주최/주관</span>

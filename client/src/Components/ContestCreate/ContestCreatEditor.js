@@ -25,7 +25,7 @@ const ContestCreatEditor = () => {
       [{ header: [1, 2, false] }],
       ['bold', 'italic', 'underline', 'strike'],
       [{ list: 'ordered' }, { list: 'bullet' }],
-      ['link', 'image'],
+      ['link'],
       [{ align: [] }, { color: [] }, { background: [] }], // dropdown with defaults from theme
       ['clean'],
     ],
@@ -59,6 +59,7 @@ const ContestCreatEditor = () => {
           theme="snow"
           modules={modules}
           formats={formats}
+          placeholder="상세 내용을 적어주세요."
         />
       </QuillPanel>
     </div>
