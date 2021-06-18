@@ -13,10 +13,10 @@ export const ContestDetailAPI = (id) => {
 };
 
 // 공모전 참가 신청
-export const contestParticipateAPI = (id) => {
-  const contestparticipate = axios.post(`/contests/participate/${id}`, {
-    positionName: positionName,
-    volunteer: volunteer,
+export const contestParticipateAPI = (id, positionName, volunteer) => {
+  const contestparticipate = axios.patch(`/contests/participate/${id}`, {
+    positionName,
+    volunteer,
   });
   return contestparticipate;
 };
