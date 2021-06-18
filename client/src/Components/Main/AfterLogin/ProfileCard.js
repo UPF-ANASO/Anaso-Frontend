@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Button from '../../common/Button/Button';
 const Container = styled.div`
@@ -12,7 +13,7 @@ const Container = styled.div`
 `;
 
 const ImageBox = styled.img`
-  width: 100px;
+  width: 150px;
   height: 150px;
 `;
 
@@ -32,11 +33,12 @@ const ButtonContainer = styled.div`
 `;
 
 const ProfileCard = () => {
+  const userInfo = useSelector((state) => state.userInfo.userInfo);
   return (
     <Container>
-      <ImageBox src={''} alt="프로필사진" />
+      <ImageBox src="" alt="프로필사진" />
       <UserName>
-        어서오세요. <strong>민스기</strong>님
+        어서오세요. <strong>{userInfo.name}</strong>님
       </UserName>
       <ButtonContainer>
         <Button text={'포트폴리오'} width={'100px'} height={'30px'} />

@@ -86,6 +86,7 @@ const Signup = () => {
   const [major, SetMajor] = useState('');
   const [university, SetUniversity] = useState('');
   const [description, SetDescription] = useState('');
+  const [ProfileImg, SetProfileImg] = useState('');
 
   const [imgURL, SetImgURL] = useState('');
   const [imgFile, SetImgFile] = useState(null);
@@ -135,8 +136,12 @@ const Signup = () => {
       const fd = new FormData();
       fd.append('profileImage', imgFile);
       try {
-        const response = await UploadImgAPI(fd);
-        console.log(response.data);
+        const ProfileURL = (await UploadImgAPI(fd)).data.file.location;
+        if (ProfileURL) {
+          SetProfileImg(ProfileURL);
+        } else {
+          alert('다시 업로드 해주세요.');
+        }
       } catch (err) {
         alert(err);
       }
@@ -145,17 +150,18 @@ const Signup = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    const fd = new FormData();
-    fd.append('name', name);
-    fd.append('email', email);
-    fd.append('password', password);
-    fd.append('profileImage', imgFile);
-    fd.append('phoneNumber', phoneNumber);
-    fd.append('major', major);
-    fd.append('university', university);
-    fd.append('description', description);
+    const userInfo = {
+      name: name,
+      email: email,
+      password: password,
+      profileImage: ProfileImg,
+      phoneNumber: phoneNumber,
+      major: major,
+      university: university,
+      description: description,
+    };
     try {
-      const response = await SignUpAPI(fd);
+      const response = await SignUpAPI(userInfo);
       console.log(response);
     } catch (err) {
       alert(err);

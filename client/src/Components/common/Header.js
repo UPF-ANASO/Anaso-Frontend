@@ -100,12 +100,14 @@ function Header() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [Token, setToken] = useState('');
+
   // 리덕스에서 username 가져오기
   const username = useSelector((state) => state.userInfo.userInfo.name);
 
   const handleLogout = (e) => {
     // 토큰/유저정보/로컬스토리지 토큰 삭제
     localStorage.removeItem('token');
+    localStorage.removeItem('userInfo');
     dispatch(clearToken());
     dispatch(clearUserInfo());
     location.reload();
@@ -113,6 +115,7 @@ function Header() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+
     if (token) {
       setToken(token);
     }

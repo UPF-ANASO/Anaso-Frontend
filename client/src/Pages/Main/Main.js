@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Background from '../../Assets/Images/background_main.jpeg';
 import styled from 'styled-components';
 import Header from '../../Components/common/Header';
@@ -12,6 +12,7 @@ import AfterLoginMain from './AfterLoginMain';
 // import Profile from '../../Components/Main/Profile';
 import Title from '../../Components/Main/Title';
 import { setCurrentAuthToken } from '../../Redux/actions/auth_action';
+import { setCurrentUserInfo } from '../../Redux/actions/userInfo_action';
 import { ReactComponent as Group } from '../../Assets/Images/group.svg';
 import { ReactComponent as Award } from '../../Assets/Images/winners.svg';
 import { ReactComponent as Portfolio } from '../../Assets/Images/portfolio_website.svg';
@@ -154,12 +155,14 @@ const ContestContainer = styled.div`
 const Main = () => {
   const dispatch = useDispatch();
   const [Token, setToken] = useState('');
-
+  const [UserInfo, setUserInfo] = useState('');
   useEffect(() => {
     // Token 가져오기
     const token = localStorage.getItem('token');
+    const userInfo = localStorage.getItem('userInfo');
     if (token) {
       setToken(token);
+      setUserInfo(userInfo);
       dispatch(setCurrentAuthToken(token));
     }
   }, []);
@@ -243,26 +246,6 @@ const Main = () => {
         </Fade>
       ) : (
         <AfterLoginMain />
-        // 로그인 후
-        //   <AfterMainContainer>
-        //     <TopSession>
-        //       <PortfolioContainer>
-        //         <h3>최신 포트폴리오</h3>
-        //         <PortfolioList />
-        //       </PortfolioContainer>
-        //       <ProfileContainer>
-        //         <Profile />
-        //       </ProfileContainer>
-        //     </TopSession>
-        //     <MiddleSession>
-        //       <h3>최신 공모전 모집글</h3>
-        //       <ContestContainer>
-        //         <ContestCard />
-        //         <ContestCard />
-        //         <ContestCard />
-        //       </ContestContainer>
-        //     </MiddleSession>
-        //   </AfterMainContainer>
       )}
       <Footer />
     </Container>
