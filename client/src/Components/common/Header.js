@@ -147,12 +147,12 @@ function Header() {
         ) : (
           <>
             <ProfileDiv>
+              <Img src={Test} alt="image"></Img>
+              <Name>{username}</Name>
               <StyledLink onClick={handleLogout}>
                 <Subtitle>로그아웃</Subtitle>
               </StyledLink>
               {/* 현재 로그인된 유저의 Name 과 Image 출력  */}
-              <Name>{username}</Name>
-              <Img src={Test} alt="image"></Img>
             </ProfileDiv>
           </>
         )}

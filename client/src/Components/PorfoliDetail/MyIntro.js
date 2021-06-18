@@ -30,6 +30,15 @@ const MyInfoDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-content: space-between;
+
+  & > p > span {
+    font-family: 'Spoqa-Regular';
+    font-size: 0.95rem;
+  }
+  & > p > span:nth-child(1) {
+    display: inline-block;
+    margin-right: 10px;
+  }
 `;
 const ProfileImg = styled.img`
   width: 150px;
@@ -41,12 +50,13 @@ const Name = styled.span`
   font-size: 1.3rem;
   display: inline-block;
   /* margin-right: 5px; */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
 const Info = styled.p`
   margin: 10px 0;
   font-family: 'Spoqa-Light';
+  /* font-size: 1.2rem; */
 `;
 function MyIntro({ match }) {
   const userId = useSelector((state) => state.userInfo.userInfo.userID);
@@ -83,7 +93,7 @@ function MyIntro({ match }) {
   return (
     <>
       <MyIntroDiv>
-        <ProfileImg alt={profile.profileImg} src={profile.profileImg} />
+        <ProfileImg alt="사진없음" src={profile.profileImage} />
         <MyInfoDiv>
           <Name>{profile.name}</Name>
           <p>

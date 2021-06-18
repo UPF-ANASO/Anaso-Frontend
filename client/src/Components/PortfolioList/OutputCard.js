@@ -27,20 +27,9 @@ const OutputContent = styled.div`
 `;
 
 const TextDiv = styled.div`
+  margin-left: 30px;
   width: 80%;
   /* height: 100%; */
-
-  & > p:nth-child(1) {
-    font-family: 'Spoqa-Medium';
-    /* height: 50px; */
-    margin-top: 10px;
-  }
-
-  & > p:nth-child(2) {
-    /* padding: 5px; */
-    /* border: 1px solid black; */
-    height: 70px;
-  }
 
   button {
     font-family: 'Spoqa-Light';
@@ -61,6 +50,27 @@ const TextDiv = styled.div`
   }
 `;
 
+const Namebox = styled.p`
+  font-family: 'Spoqa-Medium';
+  font-size: 1.3rem;
+`;
+
+const Descriptionbox = styled.p`
+  font-family: 'Spoqa-Light';
+  font-size: 1.1rem;
+  margin: 10px 0;
+  height: 80px;
+`;
+
+const Univdiv = styled.p`
+  margin-top: 10px;
+  font-family: 'Spoqa-Light';
+  display: flex;
+  font-size: 0.9rem;
+  & > p:nth-child(1) {
+    margin-right: 8px;
+  }
+`;
 function OutputCard({ data }) {
   return (
     <Fade bottom>
@@ -73,14 +83,18 @@ function OutputCard({ data }) {
               <img
                 src={user.profileImage}
                 alt="test"
-                width="140px"
-                height="140px"
+                width="180px"
+                height="180px"
               />
               <TextDiv>
-                <p key={user._id}>{user.name}</p>
-                <p key={user._id}>{user.description}</p>
-                <p key={user._id}>{user.university}</p>
-                <p key={user._id}>{user.major}</p>
+                <Namebox key={user._id}>{user.name}</Namebox>
+                <Univdiv>
+                  <p key={user._id}>{user.university}</p>
+                  <p key={user._id}>{user.major}</p>
+                </Univdiv>
+                <Descriptionbox key={user._id}>
+                  {user.description}
+                </Descriptionbox>
                 <Link to={`/portfoliodetail/${user._id}`}>
                   <button>자세히 보기</button>
                 </Link>
