@@ -11,18 +11,25 @@ function PortfolioCreate() {
   const token = useSelector((state) => state.auth.currentToken);
   // 헤더 부분 정의
   const config = {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${token}`,
+    },
   };
   // useState 객체 형태로 .
   const [content, setContent] = useState({
     // 초기값 설정
     title: '',
-    thumbnail: null,
+    explanation: '',
+    role: '',
+    // thumbnail: null,
   });
+
+  const [imageFile, setImgFile] = useState(null);
   // 구조분해할당.
   // title, date 에 각각 초기값이 먼저 들어감.
   // 값이 바뀌면 구조분해할당으로 title 값에 text 값이, date 값에 date 값이 들어간다.
-  const { title, thumbnail } = content;
+  const { title, explanation, role } = content;
   // input 에 값이 입력될 때마다 함수 실행
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -37,13 +44,24 @@ function PortfolioCreate() {
     // console.log({ thumbnail });
   };
 
+  const handleChangeFile = (e) => {
+    // let reader = new FileReader();
+    const files = e.target.files[0];
+    setImgFile(files);
+  };
+
   const handlesubmit = (e) => {
     e.preventDefault();
+    const formdata = new FormData();
+    formdata.append('title', title);
+    formdata.append('explanation', explanation);
+    formdata.append('role', role);
+    formdata.append('thumbnail', imageFile);
+    formdata.append('config', config);
+    formdata.append('user_id', userId);
     // title = e.target.title.value;
     // role = e.target.role.value;
-    // console.log(role);
-    console.log(title);
-    ProjectCreateAPI(title, config, userId, thumbnail);
+    ProjectCreateAPI(formdata, config);
   };
   return (
     <>
@@ -56,10 +74,22 @@ function PortfolioCreate() {
           onChange={handleChange}
         />
         <input
-          name="thumbnail"
-          type="file"
-          value={thumbnail}
+          name="explanation"
+          placeholder="설명을 입력하세요."
+          value={explanation}
           onChange={handleChange}
+        />
+        <input
+          name="role"
+          placeholder="역할을 입력하세요."
+          value={role}
+          onChange={handleChange}
+        />
+        <input
+          // name="thumbnail"
+          type="file"
+          // value={thumbnail}
+          onChange={handleChangeFile}
         />
         <input type="submit" value="저장" />
       </form>

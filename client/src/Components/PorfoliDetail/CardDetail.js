@@ -10,11 +10,33 @@ import Error from '../common/Error/Error';
 import { useState, useEffect } from 'react';
 import Button from '../common/Button/Button';
 import { useSelector } from 'react-redux';
-const Title = styled.p`
-  font-family: 'Spoqa-Medium';
-  font-size: 1.5rem;
-`;
 import { Link } from 'react-router-dom';
+
+const Title = styled.span`
+  display: inline-block;
+  /* width: 280px; */
+  padding-right: 20px;
+  font-family: 'Spoqa-Medium';
+  font-size: 1.7rem;
+`;
+
+const CardDetailDiv = styled.div`
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Explanation = styled.p`
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+`;
+
+const Img = styled.img`
+  width: 300px;
+  height: 300px;
+  padding: 30px;
+`;
 
 function CardDetail({ match }) {
   const userId = useSelector((state) => state.userInfo.userInfo.userID);
@@ -72,24 +94,26 @@ function CardDetail({ match }) {
     );
   return (
     <>
-      <Title>{details.title}</Title>
-      <img width="300px" height="300px" src={details.thumbnail} />
-      <div>
-        <p>여기는 내용</p>
-      </div>
-      {details.role}
-      {/* {details.participant} */}
-      {userId === details.user_id ? (
-        <Link to={`/portfoliodetail/${userId}`}>
-          <Button
-            text="이 프로젝트 삭제하기"
-            color="coral"
-            onClick={clickdel}
-          />
-        </Link>
-      ) : (
-        <></>
-      )}
+      <CardDetailDiv>
+        <div>
+          <Title>{details.title}</Title>
+          <span>역할 | </span>
+          <span>{details.role}</span>
+        </div>
+        <Img width="300px" height="300px" src={details.thumbnail} />
+        <Explanation>{details.explanation}</Explanation>
+        {userId === details.user_id ? (
+          <Link to={`/portfoliodetail/${userId}`}>
+            <Button
+              text="이 프로젝트 삭제하기"
+              color="coral"
+              onClick={clickdel}
+            />
+          </Link>
+        ) : (
+          <></>
+        )}
+      </CardDetailDiv>
     </>
   );
 }

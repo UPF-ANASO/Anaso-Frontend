@@ -36,17 +36,11 @@ export const UserListAPI = () => {
 };
 
 // 프로젝트 생성 API
-export const ProjectCreateAPI = async (title, config, userId, thumbnail) => {
-  console.log(config);
+export const ProjectCreateAPI = (formdata, config) => {
+  // console.log(config);
   const api = axios.post(
     'projects/create',
-    {
-      title: title,
-      participant: '밈미, 옹이',
-      thumbnail: thumbnail,
-      role: '대장',
-      user_id: userId,
-    },
+    formdata,
     // header 추가
     config,
   );
