@@ -64,6 +64,7 @@ const Login = () => {
       }
       dispatch(setCurrentAuthToken(response.data.token)); // Token state 저장
       const userInfo = {
+        userID: response.data.userInfo._id,
         name: response.data.userInfo.name,
         email: response.data.userInfo.email,
         phone_number: response.data.userInfo.phoneNumber,

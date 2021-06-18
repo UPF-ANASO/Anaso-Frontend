@@ -3,6 +3,7 @@ import { CLEAR_USER_INFO, SET_USER_INFO } from '../actions/types';
 // UserInfo 저장
 const initialUserInfoState = {
   userInfo: {
+    userID: '', // Mogodb Userid
     name: '', // 이름
     email: '', // 이메일
     phone_number: '', // 휴대폰 번호
@@ -22,6 +23,7 @@ export default function (state = initialUserInfoState, action) {
       return {
         ...state,
         userInfo: {
+          userID: '', // Mongodb UserID
           name: '', // 이름
           email: '', // 이메일
           phone_number: '', // 휴대폰 번호
