@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import Button from '../common/Button/Button';
 import { PrimaryColor } from '../../Assets/Color/Color';
@@ -47,10 +48,14 @@ const DisableButton = styled.button`
   background-color: #888;
 `;
 
-const ContestDetailApply = ({ positions }) => {
-  // useSelector로 username 가져와서 넣고 + positionName
-  // const response = await contestParticipateAPI()
-  // 버튼 onClick했을때 조회해서 붙여야함
+const ContestDetailApply = ({ id, positions }) => {
+  // 유저 이름 정보 불러오기
+  const username = useSelector((state) => state.userInfo.userInfo.name);
+
+  const onParticipate = async (positionName) => {
+    const response = await contestParticipateAPI(id, positionName, username);
+    console.log(response);
+  };
 
   return (
     <ApplyPanel>
@@ -64,7 +69,11 @@ const ContestDetailApply = ({ positions }) => {
             {position.recruitNumbers === position.confirmedNumbers ? (
               <DisableButton width="90px">인원 마감</DisableButton>
             ) : (
-              <Button width="90px" text="신청하기" />
+              <Button
+                onClick={() => onParticipate(position.positionName)}
+                width="90px"
+                text="신청하기"
+              />
             )}
           </PositionBox>
         ))}

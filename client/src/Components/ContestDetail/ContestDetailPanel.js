@@ -23,6 +23,7 @@ const ContestDetailPanel = ({ match, history }) => {
 
         const contestDetailRes = await ContestDetailAPI(match.params.id);
         setContestDetailDatas(contestDetailRes.data);
+        console.log(contestDetailRes);
       } catch (e) {
         setError(e); // error : true
         console.log(e);
