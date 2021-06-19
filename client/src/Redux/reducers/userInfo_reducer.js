@@ -9,6 +9,7 @@ const initialUserInfoState = {
     phone_number: '', // 휴대폰 번호
     major: '', // 전공
     university: '', // 대학교
+    profileImage: '', // 프로필 사진 경로
   },
 };
 
@@ -29,6 +30,7 @@ export default function (state = initialUserInfoState, action) {
           phone_number: '', // 휴대폰 번호
           major: '', // 전공
           university: '', // 대학교
+          profileImage: '', // 사진 경로
         },
       };
     default:

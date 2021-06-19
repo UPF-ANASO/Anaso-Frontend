@@ -6,7 +6,7 @@ const UserList = ({ data }) => {
       {data.length > 0 &&
         Portfolio.map((dt) => (
           <CardForm>
-            <UserImg src={dt} alt="프로필 사진" />
+            <UserImg src={dt.Profile} alt="프로필 사진" />
             <CardName>{dt.name}</CardName>
             <CardName>{dt.major}</CardName>
           </CardForm>

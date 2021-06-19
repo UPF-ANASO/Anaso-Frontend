@@ -103,6 +103,9 @@ function Header() {
 
   // 리덕스에서 username 가져오기
   const username = useSelector((state) => state.userInfo.userInfo.name);
+  const profileURL = useSelector(
+    (state) => state.userInfo.userInfo.profileImage,
+  );
 
   const handleLogout = (e) => {
     // 토큰/유저정보/로컬스토리지 토큰 삭제
@@ -150,7 +153,7 @@ function Header() {
         ) : (
           <>
             <ProfileDiv>
-              <Img src={Test} alt="image"></Img>
+              <Img src={profileURL} alt="image"></Img>
               <Name>{username}</Name>
               <StyledLink onClick={handleLogout}>
                 <Subtitle>로그아웃</Subtitle>

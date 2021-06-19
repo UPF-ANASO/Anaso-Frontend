@@ -58,6 +58,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await LoginAPI(ID, PW);
+      console.log(response.data.userInfo);
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
       }
@@ -66,6 +67,7 @@ const Login = () => {
         userID: response.data.userInfo._id,
         name: response.data.userInfo.name,
         email: response.data.userInfo.email,
+        profileImage: response.data.userInfo.profileImage,
         phone_number: response.data.userInfo.phoneNumber,
         major: response.data.userInfo.major,
         university: response.data.userInfo.university,

@@ -36,7 +36,7 @@ const ProfileCard = () => {
   const userInfo = useSelector((state) => state.userInfo.userInfo);
   return (
     <Container>
-      <ImageBox src="" alt="프로필사진" />
+      <ImageBox src={userInfo.profileImage} alt="프로필사진" />
       <UserName>
         어서오세요. <strong>{userInfo.name}</strong>님
       </UserName>
