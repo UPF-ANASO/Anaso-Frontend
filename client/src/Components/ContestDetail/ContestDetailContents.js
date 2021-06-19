@@ -37,10 +37,7 @@ const ContestDetailContents = ({ data }) => {
         {/* 에디터 내용이 HTML형식의 텍스트로 들어갈 거기 때문에 나중에 파싱해줘야 함 */}
         <p>{data.detail}</p>
       </TextBox>
-      <ContestDetailApply
-        id={data._id}
-        positions={data.applyStatus.positions}
-      />
+      <ContestDetailApply id={data._id} positions={data.positions} />
     </ContentsPanel>
   );
 };
