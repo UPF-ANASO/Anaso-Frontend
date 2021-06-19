@@ -57,6 +57,7 @@ const TopPortfolio = () => {
       try {
         const response = await MainUserAPI();
         setPortfolio(response.data.portfolios.slice(0, 5));
+        console.log(response);
       } catch (e) {
         console.log(e);
       }
@@ -69,7 +70,7 @@ const TopPortfolio = () => {
       {Portfolio.length > 0 &&
         Portfolio.map((dt) => (
           <CardForm>
-            <UserImg src={Test} alt="프로필 사진" />
+            <UserImg src={dt.profileImage} alt="프로필 사진" />
             <CardName id="title">{dt.description}</CardName>
             <CardRows>
               <CardName>{dt.name}</CardName>

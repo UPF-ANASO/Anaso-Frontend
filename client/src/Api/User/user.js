@@ -7,8 +7,13 @@ export const UploadImgAPI = (fd) => {
 };
 
 // 유저 회원가입
-export const SignUpAPI = (userInfo) => {
-  const response = axios.post('/users/signup', userInfo);
+export const SignUpAPI = (fd) => {
+  const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  };
+  const response = axios.post('/users/signup', fd, config);
   return response;
 };
 

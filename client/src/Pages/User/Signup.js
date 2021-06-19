@@ -12,6 +12,7 @@ import {
 } from '../../Assets/Color/Color';
 import { SignUpAPI, UploadImgAPI } from '../../Api/User/user';
 import Footer from '../../Components/Main/Footer';
+import { useHistory } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100%;
@@ -91,6 +92,7 @@ const Signup = () => {
   const [imgURL, SetImgURL] = useState('');
   const [imgFile, SetImgFile] = useState(null);
 
+  const history = useHistory();
   const ImgRef = useRef(null);
 
   const onChangeName = (e) => {
@@ -128,41 +130,27 @@ const Signup = () => {
         SetImgURL(base.toString());
       }
     };
-
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
       SetImgFile(e.target.files[0]);
-
-      const fd = new FormData();
-      fd.append('profileImage', imgFile);
-      try {
-        const ProfileURL = (await UploadImgAPI(fd)).data.file.location;
-        if (ProfileURL) {
-          SetProfileImg(ProfileURL);
-        } else {
-          alert('다시 업로드 해주세요.');
-        }
-      } catch (err) {
-        alert(err);
-      }
     }
   };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    const userInfo = {
-      name: name,
-      email: email,
-      password: password,
-      profileImage: ProfileImg,
-      phoneNumber: phoneNumber,
-      major: major,
-      university: university,
-      description: description,
-    };
+    const fd = new FormData();
+    fd.append('name', name);
+    fd.append('email', email);
+    fd.append('password', password);
+    fd.append('profileImage', imgFile);
+    fd.append('phoneNumber', phoneNumber);
+    fd.append('major', major);
+    fd.append('university', university);
+    fd.append('description', description);
     try {
-      const response = await SignUpAPI(userInfo);
+      const response = await SignUpAPI(fd);
       console.log(response);
+      history.push('/');
     } catch (err) {
       alert(err);
     }
