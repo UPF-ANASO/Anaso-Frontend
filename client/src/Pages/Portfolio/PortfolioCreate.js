@@ -115,7 +115,7 @@ function PortfolioCreate() {
           />
           <Input
             name="role"
-            placeholder="역할을 입력하세요."
+            placeholder="나의 역할을 입력하세요."
             value={role}
             onChange={handleChange}
           />
